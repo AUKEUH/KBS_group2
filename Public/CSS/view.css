@@ -1,0 +1,14 @@
+.view_button_cart{
+    width: 100px;
+    height: 48px;
+    display: inline-block;
+    line-height: 18px;
+    text-align: center;
+    background-color: rgba(35, 40, 47, 0.8);
+    color: #efefefef;
+    border: 2px rgb(200,200 ,200 ) solid;
+    font-size: 14px;
+}
+.view_button_cart:hover{
+    color: white;
+}

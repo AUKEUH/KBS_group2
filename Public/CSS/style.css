@@ -53,7 +53,8 @@ a:hover span {
 input {
     font-family: pt-sans, sans-serif;
     height: 50px;
-    font-size: 20px;
+    text-align: center;
+    font-size: 16px;
     width: 100%;
     padding: 0 10px;
 }
@@ -483,6 +484,11 @@ ul#ul-class-price li {
 .cart_button_small{
   padding:10px;
   cursor: pointer;
+    color: white;
+
+}
+.cart_button_small:hover{
+    color: white;
 }
 
 .cart_button_small_false{
@@ -513,7 +519,7 @@ ul#ul-class-price li {
   background-color: black;
   color: white;
   border: 1px solid white;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .cart_button:hover{
@@ -529,4 +535,9 @@ ul#ul-class-price li {
 
 .view_button_false{
   pointer-events: none;
+}
+
+.table-striped {
+    color: white;
+    background-color: rgb(15, 35, 47);
 }

@@ -12,6 +12,7 @@ include "header.php";
 <body>
 <h1>Inhoud Winkelwagen</h1>
 
+
 <?php
 // komt door merge conflict (waarschijnlijk useless)
 // if (isset($_GET["delete"])) {              // zelfafhandelend formulier
@@ -60,7 +61,7 @@ $cart = getCart();
 print_r($cart);
 
 if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
-  print('<table border="2">');
+  print('<table class="table table-striped" border="2">');
   print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
 
   $totaal = 0;
@@ -94,6 +95,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
 
   }
 
+
   print("<th>Totaal</th>");
   print("<td></td>");
   print("<td></td>");
@@ -104,6 +106,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
 }
 
 ?>
+
 <div class="cart_buttons_box">
   <a href="cart.php?order=true" class="cart_button">Bestellen</a>
   <a href='index.php' class="cart_button">Verder Winkelen</a>
