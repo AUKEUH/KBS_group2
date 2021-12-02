@@ -17,7 +17,6 @@ select {
     font-size: 16px;
     border: 1px solid #CCC;
     height:50px;
-    margin-left: 0px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -30,8 +29,8 @@ a {
     color:#000000;
 }
 a:hover {
-     text-decoration: none !important;
- }
+    text-decoration: none !important;
+}
 a span {
     display: none;
     position: absolute;
@@ -53,7 +52,7 @@ a:hover span {
 input {
     font-family: pt-sans, sans-serif;
     height: 50px;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     width: 100%;
     padding: 0 10px;
@@ -237,11 +236,10 @@ ul#ul-class-navigation li {
     position: absolute;
 }
 #LogoImage {
-    background-image: url("../Img/main-logo.jpeg");
+    background-image: url("../Img/main-logo.png");
     background-repeat: no-repeat;
-    width: 250px;
-    height: 90px;
-    margin: 55px 55px 55px 10%;
+    width: 200px;
+    height: 200px;
 }
 ul#ul-class li {
     display: inline;
@@ -482,9 +480,11 @@ ul#ul-class-price li {
 }
 
 .cart_button_small{
-  padding:10px;
-  cursor: pointer;
+    padding:10px;
+    cursor: pointer;
     color: #efefefef;
+    font-size: 20px;
+
 
 }
 .cart_button_small:hover{
@@ -492,55 +492,58 @@ ul#ul-class-price li {
 }
 
 .cart_button_small_false{
-  padding:10px;
-  pointer-events: none;
+    padding:10px;
+    pointer-events: none;
 }
 
 .cart_button_hover{
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 
 .cart_product_link{
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+
 }
 
 .cart_product_link:hover{
-  color: white;
-  text-decoration: underline !important;
+    color: white;
+    text-decoration: underline !important;
 }
 
 .cart_button{
-  width: 200px;
-  height: 50px;
-  display: inline-block;
-  line-height: 48px;
-  text-align: center;
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  font-size: 20px;
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+    line-height: 48px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    font-size: 20px;
 }
 
 .cart_button:hover{
-  color: white;
-  text-decoration: underline !important;
+    color: white;
+    text-decoration: underline !important;
 }
 
 .cart_buttons_box{
-  position: fixed;
-  bottom: 60px;
-  right: 30px;
+    position: fixed;
+    bottom: 60px;
+    right: 30px;
 }
 
 .view_button_false{
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .table-dark{
     background-color: #252536;
 }
 .hallo_user {
-    margin-left: 30%;
-    font-size: 40px;
+    margin-left: 75%;
+    font-size: 20px;
+    margin-top: 7%;
 }
