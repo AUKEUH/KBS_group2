@@ -69,7 +69,7 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                             <div class="carousel-inner">
                                 <?php for ($i = 0; $i < count($StockItemImage); $i++) {
                                     ?>
-                                    <div class="carousel-item <?php print ($i == $i) ? 'active' : ''; ?>">
+                                    <div class="carousel-item <?php print ($i == 1) ? 'active' : ''; ?>">
                                         <img src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
                                     </div>
                                 <?php } ?>
