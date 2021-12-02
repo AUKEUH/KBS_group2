@@ -10,7 +10,8 @@ include "header.php";
         <br>
         <label for="password">Wachtwoord:</label>
         <input type="password" name="password" id="password" required>
-        <button type="submit" name="submit"class="btn  mt-2 btn-primary">Log In</button>
+        <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
+        <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
         <br>
         <a href="/register" class="HrefDecoration">Ik heb nog geen account</a>
     </form>
@@ -25,4 +26,10 @@ if (isset($_GET["submit"])){
         $_SESSION["login"] = FALSE;
         print "De inlog gegevens zijn fout";
     }
+}
+
+if (isset($_GET["logout"])){
+    $_SESSION["login"] = FALSE;
+    $_SESSION["username"] = '';
+    header("Refresh:0; url=login.php");
 }
