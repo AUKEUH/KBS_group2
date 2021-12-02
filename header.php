@@ -65,7 +65,7 @@ $databaseConnection = connectToDatabase();
                 <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
             </li>
             <li>
-                <a href="login.php" class="HrefDecoration"><i class="fas fa-sign-in-alt"></i> inloggen</a>
+                <a href="login.php" class="HrefDecoration"><i class="fas fa-user-alt"></i> inloggen</a>
             </li>
 
         </ul>
