@@ -484,7 +484,7 @@ ul#ul-class-price li {
 .cart_button_small{
   padding:10px;
   cursor: pointer;
-    color: white;
+    color: #efefefef;
 
 }
 .cart_button_small:hover{
@@ -537,7 +537,6 @@ ul#ul-class-price li {
   pointer-events: none;
 }
 
-.table-striped {
-    color: white;
-    background-color: rgb(15, 35, 47);
+.table-dark{
+    background-color: #252536;
 }

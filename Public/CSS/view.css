@@ -1,14 +1,16 @@
+.test {
+
 .view_button_cart{
     width: 100px;
-    height: 48px;
+    height: 50px;
     display: inline-block;
-    line-height: 18px;
+    line-height: 20px;
     text-align: center;
     background-color: rgba(35, 40, 47, 0.8);
     color: #efefefef;
-    border: 2px rgb(200,200 ,200 ) solid;
-    font-size: 14px;
+    border: 1px solid white;
+    font-size: 16px;
 }
 .view_button_cart:hover{
     color: white;
-}
+    background-color: rgba(39, 45, 50, 1);

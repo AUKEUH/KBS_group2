@@ -61,7 +61,7 @@ $cart = getCart();
 print_r($cart);
 
 if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
-  print('<table class="table table-striped" border="2">');
+  print('<table class="table table-dark">');
   print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
 
   $totaal = 0;
