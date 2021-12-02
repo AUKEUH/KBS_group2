@@ -13,7 +13,10 @@ include "header.php";
 <?php if(!isset($_GET['order-success'])){ ?>
   <h1>Inhoud Winkelwagen</h1>
 <?php } ?>  
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5a9701e7fad920f8268ae4a3f6eec72276825314
 
 <?php
 // komt door merge conflict (waarschijnlijk useless)
