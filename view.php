@@ -114,9 +114,9 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                                       $cart_aantal = 0;
                                     }
                                     if (preg_replace('/\D/', '', $StockItem["QuantityOnHand"]) > $cart_aantal){ //checkt of het product nog op voorraad is
-                                      ?><input type="submit" name="submit" value="Voeg toe aan winkelmandje"><?php
+                                      ?><input type="submit" name="submit" value="Voeg toe aan winkelmand"><?php
                                     }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
-                                      ?><div class="cart_button_hover"><input class='view_button_false' type="submit" name="submit" value="Voeg toe aan winkelmandje"></div><?php
+                                      ?><div class="cart_button_hover"><input class='view_button_false' type="submit" name="submit" value="Voeg toe aan winkelmand"></div><?php
                                     } ?>
                             <!-- <input type="submit" name="submit" value="Voeg toe aan winkelmandje"> -->
                         </form>
@@ -126,7 +126,7 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                             $stockItemID = $_POST["stockItemID"];
                             addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
                             print("<h6>Product is toegevoegd aan winkel mand</h6>");
-                            print("<a href='cart.php' class='view_button_cart'>Naar winkelmandje</a>");
+                            print("<a href='cart.php' class='view_button_cart'>Naar winkelmand</a>");
                         }
                         ?>
                     </div>
