@@ -13,7 +13,6 @@ include "header.php";
 <h1>cart data:</h1>
 <?php
 $cart = getCart();
-print_r($cart);
 ?>
 <h1>Voorraad:</h1> <?php
 foreach($cart as $number => $aantal)

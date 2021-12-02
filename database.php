@@ -6,7 +6,7 @@ function connectToDatabase() {
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Set MySQLi to throw exceptions
     try {
-        $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+        $Connection = mysqli_connect("localhost", "root", "root", "nerdygadgets");
         mysqli_set_charset($Connection, 'latin1');
         $DatabaseAvailable = true;
     } catch (mysqli_sql_exception $e) {
@@ -96,21 +96,66 @@ function getStockItemImage($id, $databaseConnection) {
     return $R;
 }
 
+// placeOrderRow($cart, $databaseConnection){
+//     $Query = "INSERT INTO orders (CustomerID, OrderDate, OrderStatus, OrderTotal) VALUES (?, ?, ?, ?)";
+//     $Statement = mysqli_prepare($databaseConnection, $Query);
+//     mysqli_stmt_bind_param($Statement, "issd", $CustomerID, $OrderDate, $OrderStatus, $OrderTotal);
+//     mysqli_stmt_execute($Statement);
+//     $OrderID = mysqli_insert_id($databaseConnection);
+//     return $OrderID;
+
+// }
+
+// function placeOrderLine($orderId, $productId, $quantity){
+//     $query = "INSERT INTO bestelling_lines (BestellingID, ProductID, quantity) VALUES (?, ?, ?)";
+//     $statement = mysqli_prepare($databaseConnection, $query);
+//     mysqli_stmt_bind_param($statement, "iii", $BestellingID, $id, $quantity);
+//     mysqli_stmt_execute($statement);
+// }
+
+function getLastOrder($userId){
+    $query = "SELECT * FROM bestellingen WHERE CustomerID = ? ORDER BY OrderID DESC LIMIT 1";
+    $statement = mysqli_prepare($databaseConnection, $query);
+    mysqli_stmt_bind_param($statement, "i", $userId);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $result;
+}
+
+function getUserOrders($userId){
+    $query = "SELECT * FROM bestellingen WHERE CustomerID = ?";
+    $statement = mysqli_prepare($databaseConnection, $query);
+    mysqli_stmt_bind_param($statement, "i", $userId);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $result;
+}
+
+function getOrderLines($orderId){
+    $query = "SELECT * FROM bestelling_lines WHERE BestellingID = ?";
+    $statement = mysqli_prepare($databaseConnection, $query);
+    mysqli_stmt_bind_param($statement, "i", $orderId);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $result;
+}
+
 function placeOrder($cart, $databaseConnection) {
+    // Maak dit dynamisch zodra registratie/login werkt door de ID van gebruiker op te halen.
+    $sql = "INSERT INTO bestellingen (PersonID) VALUES (10);";
 
-    $Query = "
+    if(mysqli_query($databaseConnection, $sql)){
+        $last_id = mysqli_insert_id($databaseConnection);
 
-      INSERT INTO `orders`()
-
-        ";
-
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $id);
-    mysqli_stmt_execute($Statement);
-    $R = mysqli_stmt_get_result($Statement);
-    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
-
-    return $R;
+        foreach ($cart as $productId => $quantity) {
+            $q3 = "INSERT INTO bestelling_lines (BestellingID, ProductID, quantity) VALUES ('$last_id', '$productId', '$quantity');";
+            mysqli_query($databaseConnection, $q3);
+        }
+    }
+    $_SESSION['cart'] = array();
 }
 
 function updateStock($cart, $databaseConnection) {
