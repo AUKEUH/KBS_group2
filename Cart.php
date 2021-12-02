@@ -10,7 +10,9 @@ include "header.php";
     <title>Winkelwagen</title>
 </head>
 <body>
-<h1>Inhoud Winkelwagen</h1>
+<?php if(!isset($_GET['order-success'])){ ?>
+  <h1>Inhoud Winkelwagen</h1>
+<?php } ?>  
 
 <?php
 // komt door merge conflict (waarschijnlijk useless)
@@ -52,12 +54,11 @@ if (isset($_GET["plus"])) {              // zelfafhandelend formulier
 
 if (isset($_GET["order"])) {              // zelfafhandelend formulier
     saveOrder($databaseConnection);
-    header("Refresh:0; url=cart.php");
 }
 
 
 $cart = getCart();
-print_r($cart);
+// print_r($cart);
 
 if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
   print('<table border="2">');
@@ -99,8 +100,11 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
   print("<td></td>");
   print("<td>" . number_format((float)$totaal, 2, '.', '') . "</td>");
 
-}else{ // winkelwagen is leeg
-  print("<h2>Winkelwagen is leeg</h2>");
+} else if( $_GET['order-success'] == true ) {
+  print('<h1 syle="text-align: center; margin-top: 250px;">Uw bestelling is succesvol ontvangen!</h1>');
+  print('<a href="/" class="cart_button">Terug naar Home</a>');
+} else {
+  print('<h1>Uw winkelwagen is leeg!</h1>');
 }
 
 ?>
