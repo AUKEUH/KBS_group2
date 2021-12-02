@@ -84,4 +84,7 @@ if (isset ($_SESSION["username"])) {
         $userKorting = 0;
     }
 }
+else{
+    $userKorting =0;
+}
 ?>
