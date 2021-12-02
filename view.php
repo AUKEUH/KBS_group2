@@ -50,7 +50,7 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                 if (count($StockItemImage) == 1) {
                     ?>
                     <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                         style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: cover;"></div>
                     <?php
                 } else if (count($StockItemImage) >= 2) { ?>
                     <!-- meerdere plaatjes laten zien -->
