@@ -13,7 +13,7 @@ include "header.php";
         <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
         <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
         <br>
-        <a href="/register.php" class="HrefDecoration">Ik heb nog geen account</a>
+        <a href="register.php" class="HrefDecoration">Ik heb nog geen account</a>
     </form>
 
 <?php
