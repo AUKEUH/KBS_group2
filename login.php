@@ -1,13 +1,28 @@
 <?php
-include "cartfuncties.php";
 include "header.php";
 ?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <style link rel="public/css/mijn.css" type="text/css"></style>
-    <title>Login</title>
-</head>
-<body>
-<h1>Login:</h1>
+<div id="CenteredContent">
+    <h1>Inloggen</h1>
+
+    <form method="GET" action="login.php">
+        <label for="username">Emailadres:</label>
+        <input type="text" placeholder="example@email.com" name="username" id="username" required>
+        <br>
+        <label for="password">Wachtwoord:</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit" name="submit"class="btn  mt-2 btn-primary">Log In</button>
+        <br>
+        <a href="/register" class="HrefDecoration">Ik heb nog geen account</a>
+    </form>
+
+<?php
+if (isset($_GET["submit"])){
+    if ($_GET["username"] === "inkoper" && $_GET["password"] === "spekkoper"){
+        $_SESSION["login"] = TRUE;
+        print "U bent ingelogd";
+        $_SESSION["username"] = $_GET["username"];
+    }else{
+        $_SESSION["login"] = FALSE;
+        print "De inlog gegevens zijn fout";
+    }
+}

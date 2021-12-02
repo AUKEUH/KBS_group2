@@ -28,6 +28,11 @@ $databaseConnection = connectToDatabase();
         <div class="col-2"><a href="./index.php" id="LogoA">
                 <div id="LogoImage"></div>
             </a></div>
+        <?php
+        if($_SESSION["login"] === TRUE){
+            print "<div class='hallo_user'> Hallo"." ".$_SESSION["username"]."</div>";
+        }
+        ?>
         <div class="col-8" id="CategoriesBar">
             <ul id="ul-class">
                 <?php
@@ -56,6 +61,9 @@ $databaseConnection = connectToDatabase();
             <li>
                 <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
             </li>
+            <li>
+                <a href="login.php" class="HrefDecoration"><i class="fas fa-sign-in-alt"></i> inloggen</a>
+            </li>
 
         </ul>
 
@@ -64,3 +72,11 @@ $databaseConnection = connectToDatabase();
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">
+
+<?php
+if($_SESSION["login"] === TRUE){
+    $userKorting = 2;
+}else{
+    $userKorting = 0;
+}
+?>

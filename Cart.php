@@ -75,7 +75,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
 
 
       if (isset($stockitem)){
-          $prijs = $aantal * ($stockitem["SellPrice"]);
+          $prijs = $aantal * ($stockitem["SellPrice"]- $userKorting);
           $totaal = $totaal += $prijs;
           print("<tr>");
           print("<td><img style='width:120px;' src='Public/StockItemIMG/".$StockItemImage[0]['ImagePath']."'></td>");
