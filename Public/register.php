@@ -12,7 +12,7 @@ include "header.php";
         <input type="text" name="password" id="password" required>
         <button type="submit" name="submit" class="btn  mt-2 btn-primary">Regristreren</button>
         <br>
-        <a href="/register" class="HrefDecoration">Ik heb nog geen account</a>
+        <a href="/login.php" class="HrefDecoration">Ik heb al een account</a>
     </form>
 
 <?php
