@@ -484,6 +484,7 @@ ul#ul-class-price li {
   padding:10px;
   cursor: pointer;
     color: #efefefef;
+    font-size: 20px;
 
 }
 .cart_button_small:hover{
@@ -502,6 +503,8 @@ ul#ul-class-price li {
 .cart_product_link{
   color: white;
   text-decoration: none;
+    font-size: 20px;
+
 }
 
 .cart_product_link:hover{
@@ -540,6 +543,7 @@ ul#ul-class-price li {
     background-color: #252536;
 }
 .hallo_user {
-    margin-left: 32%;
+    margin-left: 75%;
     font-size: 20px;
+    margin-top: 7%;
 }
