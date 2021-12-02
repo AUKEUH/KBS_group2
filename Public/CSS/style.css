@@ -17,6 +17,7 @@ select {
     font-size: 16px;
     border: 1px solid #CCC;
     height:50px;
+    margin-left: 0px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
