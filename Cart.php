@@ -10,9 +10,8 @@ include "header.php";
     <title>Winkelwagen</title>
 </head>
 <body>
-<?php if(!isset($_GET['order-success'])){ ?>
-  <h1>Inhoud Winkelwagen</h1>
-<?php }
+  <h1 class="winkelwagen_titel">Winkelwagen</h1>
+<?php
 
 // komt door merge conflict (waarschijnlijk useless)
 // if (isset($_GET["delete"])) {              // zelfafhandelend formulier
@@ -61,12 +60,11 @@ $cart = getCart();
 
 if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
   print('<table class="table table-dark">');
-  print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
+  print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><th></th><th></th><th></th><tr>');
 
   $totaal = 0;
 
-  foreach($cart as $number => $aantal)
-  {
+  foreach($cart as $number => $aantal){
       $stockitem = getStockItem($number, $databaseConnection);
           // print_r($stockitem);
           // $StockItem["QuantityOnHand"]
@@ -79,8 +77,8 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           print("<tr>");
           print("<td><img style='width:120px;' src='Public/StockItemIMG/".$StockItemImage[0]['ImagePath']."'></td>");
           print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>");
-          print("<td class='cart_product_link'>" . $aantal . "</td>");
-          print("<td class='cart_product_link'>" . number_format((float)$prijs, 2, '.', '') . "</td>");
+          print("<td class='cart_text_style'>" . $aantal . "</td>");
+          print("<td class='cart_text_style'>" . number_format((float)$prijs, 2, '.', '') . "</td>");
           print("<td><a class='cart_button_small' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'> - </a></td>");
           if (preg_replace('/\D/', '', $stockitem["QuantityOnHand"]) > $aantal){ //checkt of het product nog op voorraad is
             print("<td><a class='cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
@@ -90,28 +88,35 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           print("<td><a class='cart_button_small' href='cart.php?delete=true&id=". ($stockitem["StockItemID"]) ."'> Verwijder </a></td>");
           print("</tr>");
       }
-
-
   }
 
+  print("<th class='cart_text_style'>Totaal</th>");
+  print("<th class='cart_text_style'></th>");
+  print("<th class='cart_text_style'></th>");
+  print("<th class='cart_text_style'>" . number_format((float)$totaal, 2, '.', '') . "</th>");
+  print("<th class='cart_text_style'></th>");
+  print("<th class='cart_text_style'></th>");
+  print("<th class='cart_text_style'></th>");
+  print("<div class='cart_buttons_box'>");
+  print("<a href='cart.php?order=true' class='cart_button'>Bestellen</a>");
+  print("<a href='index.php' class='cart_button'>Verder Winkelen</a>");
+  print("</div>");
 
-  print("<th class='cart_product_link'>Totaal</th>");
-  print("<td class='cart_product_link'></td>");
-  print("<td class='cart_product_link'> </td>");
-  print("<td class='cart_product_link'>" . number_format((float)$totaal, 2, '.', '') . "</td>");
 
-} else if( $_GET['order-success'] == true ) {
-  print('<h1 syle="text-align: center; margin-top: 250px;">Uw bestelling is succesvol ontvangen!</h1>');
-  print('<a href="/" class="cart_button">Terug naar Home</a>');
-} else {
-  print('<h1>Uw winkelwagen is leeg!</h1>');
-}
-
+}else if(isset($_GET['order-success'])){
+    if( $_GET['order-success'] == true ) {
+    print('<h3 syle="text-align: center; margin-top: 250px;">Uw bestelling is succesvol ontvangen!</h3>');
+    print('<a href="index.php" class="cart_button">Terug naar Home</a>');
+    }
+  }
+  else {
+    print('<h3>Uw winkelwagen is leeg!</h3>');
+  }
 ?>
 
-<div class="cart_buttons_box">
+<!-- <div class="cart_buttons_box">
   <a href="cart.php?order=true" class="cart_button">Bestellen</a>
   <a href='index.php' class="cart_button">Verder Winkelen</a>
-</div>
+</div> -->
 </body>
 </html>

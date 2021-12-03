@@ -31,8 +31,13 @@ $databaseConnection = connectToDatabase();
         <?php
         if (isset ($_SESSION["username"])){
             if($_SESSION["login"] === TRUE){
-                print "<div class='hallo_user'> Hallo"." ".$_SESSION["username"]."</div>";
+                // print "<div class='hallo_user'> Hallo"." ".$_SESSION["username"]."</div>";
+                $loginText = "Welkom ".$_SESSION["username"];
+            }else{
+              $loginText = "inloggen";
             }
+        }else{
+          $loginText = "inloggen";
         }
 
         ?>
@@ -65,7 +70,7 @@ $databaseConnection = connectToDatabase();
                 <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
             </li>
             <li>
-                <a href="login.php" class="HrefDecoration"><i class="fas fa-user-alt nav-icon"></i> inloggen</a>
+                <a href="login.php" class="HrefDecoration welkom_user_block"><i class="fas fa-user-alt nav-icon"></i> <?php echo $loginText; ?></a>
             </li>
 
         </ul>
