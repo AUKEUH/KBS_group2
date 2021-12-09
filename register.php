@@ -2,18 +2,17 @@
 include "header.php";
 ?>
 <div id="CenteredContent">
-    <h1>Inloggen</h1>
+    <h1>Regristreren</h1>
 
     <form method="GET" action="login.php">
         <label for="username">Emailadres:</label>
         <input type="text" placeholder="example@email.com" name="username" id="username" required>
         <br>
-        <label for="password">Wachtwoord:</label>
-        <input type="password" name="password" id="password" required>
-        <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
-        <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
+        <label for="password">naam:</label>
+        <input type="text" name="password" id="password" required>
+        <button type="submit" name="submit" class="btn  mt-2 btn-primary">Regristreren</button>
         <br>
-        <a href="register.php" class="HrefDecoration">Ik heb nog geen account</a>
+        <a href="login.php" class="HrefDecoration">Ik heb al een account</a>
     </form>
 
 <?php
@@ -26,10 +25,4 @@ if (isset($_GET["submit"])){
         $_SESSION["login"] = FALSE;
         print "De inlog gegevens zijn fout";
     }
-}
-
-if (isset($_GET["logout"])){
-    $_SESSION["login"] = FALSE;
-    $_SESSION["username"] = '';
-    header("Refresh:0; url=login.php");
 }

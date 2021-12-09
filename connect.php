@@ -3,13 +3,13 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$databaseName = "cursus";
+$databaseName = "nerdygadgets";
 $port = 3306;
 $connection = mysqli_connect($host, $user, $pass, $databaseName, $port);
 
 
 $sql = "SELECT * FROM medewerker WHERE afd=30";
-$sql = "INSERT INTO `medewerker` (naam,voorl,chef,afd) 
+$sql = "INSERT INTO `medewerker` (naam,voorl,chef,afd)
     VALUES ('Twan','T', 300 , 20);";
 
 
@@ -64,8 +64,8 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $afd = $row["afd"];
     print(
         "<tr>
-        <td>" . $naam . "<td> 
-        <td>" . $voorl . "<td> 
+        <td>" . $naam . "<td>
+        <td>" . $voorl . "<td>
         <td>" . $chef . "<td>
         <td>" . $afd . "<td>
       <tr>"

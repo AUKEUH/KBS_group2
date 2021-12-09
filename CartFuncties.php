@@ -62,6 +62,7 @@ function minProductToCart($stockItemID){
 
 function saveOrder($databaseConnection){
     $cart = getCart();
-  // placeOrder($cart, $databaseConnection);
-  updateStock($cart, $databaseConnection);
+    placeOrder($cart, $databaseConnection);
+    updateStock($cart, $databaseConnection);
+    header("Refresh:0; url=cart.php?order-success=1");
 }

@@ -29,9 +29,17 @@ $databaseConnection = connectToDatabase();
                 <div id="LogoImage"></div>
             </a></div>
         <?php
-        if($_SESSION["login"] === TRUE){
-            print "<div class='hallo_user'> Hallo"." ".$_SESSION["username"]."</div>";
+        if (isset ($_SESSION["username"])){
+            if($_SESSION["login"] === TRUE){
+                // print "<div class='hallo_user'> Hallo"." ".$_SESSION["username"]."</div>";
+                $loginText = "Welkom ".$_SESSION["username"];
+            }else{
+              $loginText = "inloggen";
+            }
+        }else{
+          $loginText = "inloggen";
         }
+
         ?>
         <div class="col-8" id="CategoriesBar">
             <ul id="ul-class">
@@ -62,7 +70,7 @@ $databaseConnection = connectToDatabase();
                 <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
             </li>
             <li>
-                <a href="login.php" class="HrefDecoration"><i class="fas fa-user nav-icon"></i> inloggen</a>
+                <a href="login.php" class="HrefDecoration welkom_user_block"><i class="fas fa-user-alt nav-icon"></i> <?php echo $loginText; ?></a>
             </li>
 
         </ul>
@@ -74,9 +82,14 @@ $databaseConnection = connectToDatabase();
             <div id="SubContent">
 
 <?php
-if($_SESSION["login"] === TRUE){
-    $userKorting = 2;
-}else{
-    $userKorting = 0;
+if (isset ($_SESSION["username"])) {
+    if ($_SESSION["login"] === TRUE) {
+        $userKorting = 2;
+    } else {
+        $userKorting = 0;
+    }
+}
+else{
+    $userKorting =0;
 }
 ?>
