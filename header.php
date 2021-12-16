@@ -9,13 +9,6 @@ $databaseConnection = connectToDatabase();
 <head>
     <title>NerdyGadgets</title>
 
-    <!-- Javascript -->
-    <script src="Public/JS/fontawesome.js"></script>
-    <script src="Public/JS/jquery.min.js"></script>
-    <script src="Public/JS/bootstrap.min.js"></script>
-    <script src="Public/JS/popper.min.js"></script>
-    <script src="Public/JS/resizer.js"></script>
-
     <!-- Style sheets-->
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
