@@ -11,7 +11,11 @@ $databaseConnection = connectToDatabase();
     <title>NerdyGadgets</title>
 
     <!-- Javascript -->
-    <script src="Public/JS/fontawesome.js"></script> <!-- Dit met eerder omdat de pagina dit vanaf het begin nodig heeft -->
+    <script src="Public/JS/jquery.min.js"></script>
+    <script src="Public/JS/fontawesome.js"></script>
+    <script src="Public/JS/bootstrap.min.js"></script>
+    <script src="Public/JS/popper.min.js"></script>
+    <script src="Public/JS/resizer.js"></script>
 
     <!-- Style sheets-->
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
