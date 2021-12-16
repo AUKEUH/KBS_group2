@@ -13,3 +13,20 @@
     color: white;
     background-color: rgba(39, 45, 50, 1);
 }
+
+.info_icon_block{
+  color: #606060;
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.show_info_block{
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10%;
+  padding: 15px;
+  background-color: white;
+  color: black;
+  position: absolute;
+  display: none;
+}

@@ -2,6 +2,7 @@
 <?php
 session_start();
 include "database.php";
+include "cartfuncties.php";
 $databaseConnection = connectToDatabase();
 ?>
 <!DOCTYPE html>
@@ -10,8 +11,8 @@ $databaseConnection = connectToDatabase();
     <title>NerdyGadgets</title>
 
     <!-- Javascript -->
-    <script src="Public/JS/fontawesome.js"></script>
     <script src="Public/JS/jquery.min.js"></script>
+    <script src="Public/JS/fontawesome.js"></script>
     <script src="Public/JS/bootstrap.min.js"></script>
     <script src="Public/JS/popper.min.js"></script>
     <script src="Public/JS/resizer.js"></script>
@@ -67,6 +68,17 @@ $databaseConnection = connectToDatabase();
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search nav-icon"></i> Zoeken</a>
             </li>
             <li>
+                <?php
+
+                $cart = getCart();
+
+
+                 $cart_count_display = count($cart);
+                 if ($cart_count_display > 0) {
+                   print '<div class="cart_inhoud_count">'.$cart_count_display.'</div>';
+                 }
+                 ?>
+
                 <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
             </li>
             <li>

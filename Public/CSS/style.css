@@ -574,3 +574,24 @@ dl, ol, ul {
 .welkom_user_block{
     margin-left: 10px;
 }
+
+.cart_inhoud_count{
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  background-color: purple;
+  text-align: center;
+  line-height: 25px;
+  font-size: 16px;
+  position: absolute;
+  margin-top: -126px;
+  margin-left: 85px;
+  z-index: 2;
+}
+
+.groter_logo{
+  font-size: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+}

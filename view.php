@@ -1,31 +1,15 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
-?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Artikelpagina (geef ?id=.. mee)</title>
-</head>
-<body>
 
-<?php
     //?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
     if (isset($_GET["id"])) {
         $stockItemID = $_GET["id"];
     } else {
         $stockItemID = 0;
     }
-?>
 
 
-<!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
-
-</body>
-</html>
-<?php
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 ?>
@@ -103,7 +87,7 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
-                        <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice'] - $userKorting); ?></b></p>
+                        <p class="StockItemPriceText"><b><?php print str_replace('.', ',', sprintf("€ %.2f", $StockItem['SellPrice'] - $userKorting)); ?></b></p>
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
@@ -114,7 +98,10 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                                       $cart_aantal = 0;
                                     }
                                     if (preg_replace('/\D/', '', $StockItem["QuantityOnHand"]) > $cart_aantal){ //checkt of het product nog op voorraad is
-                                      ?><input type="submit" name="submit" value="Voeg toe aan winkelmand"><?php
+                                      ?><input type="submit" name="submit" value="Voeg toe aan winkelmand">
+                                      <div class="info_icon_block"><i class='fas fa-info-circle'></i></div>
+                                      <div class="show_info_block">Je product wordt niet gereserveerd. Dus koop je product snel!</div>
+                                      <?php
                                     }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
                                       ?><div class="cart_button_hover"><input class='view_button_false' type="submit" name="submit" value="Voeg toe aan winkelmand"></div><?php
                                     } ?>
@@ -180,3 +167,4 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+<script src="Public/JS/custom.js"></script>
