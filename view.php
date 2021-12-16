@@ -1,7 +1,6 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
 
     //?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
     if (isset($_GET["id"])) {

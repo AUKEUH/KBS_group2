@@ -1,5 +1,4 @@
 <?php
-include "cartfuncties.php";
 include "header.php";
 ?>
 <!DOCTYPE html>
