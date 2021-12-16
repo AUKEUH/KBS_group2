@@ -9,6 +9,9 @@ $databaseConnection = connectToDatabase();
 <head>
     <title>NerdyGadgets</title>
 
+    <!-- Javascript -->
+    <script src="Public/JS/fontawesome.js"></script> <!-- Dit met eerder omdat de pagina dit vanaf het begin nodig heeft -->
+
     <!-- Style sheets-->
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">

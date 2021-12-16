@@ -78,7 +78,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           print("<td><img style='width:120px;' src='Public/StockItemIMG/".$StockItemImage[0]['ImagePath']."'></td>");
           print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>");
           print("<td class='cart_text_style'>" . $aantal . "</td>");
-          print("<td class='cart_text_style'>" . number_format((float)$prijs, 2, '.', '') . "</td>");
+          print("<td class='cart_text_style'>" . str_replace('.', ',', number_format((float)$prijs, 2, '.', '')) . "</td>");
           print("<td><a class='cart_button_small' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'> - </a></td>");
           if (preg_replace('/\D/', '', $stockitem["QuantityOnHand"]) > $aantal){ //checkt of het product nog op voorraad is
             print("<td><a class='cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
@@ -93,7 +93,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
   print("<th class='cart_text_style'>Totaal</th>");
   print("<th class='cart_text_style'></th>");
   print("<th class='cart_text_style'></th>");
-  print("<th class='cart_text_style'>" . number_format((float)$totaal, 2, '.', '') . "</th>");
+  print("<th class='cart_text_style'>" . str_replace('.', ',', number_format((float)$totaal, 2, '.', '')) . "</th>");
   print("<th class='cart_text_style'></th>");
   print("<th class='cart_text_style'></th>");
   print("<th class='cart_text_style'></th>");
