@@ -59,7 +59,7 @@ $cart = getCart();
 
 if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
     print('<table class="table table-dark">');
-    print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th></th><th>Aantal</th><th></th><th>Prijs per stuk</th><th>Subtotaal</th><tr>');
+    print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th></th><th>Aantal</th><th></th><th>Prijs per stuk</th><th>Subtotaal</th><th></th><tr>');
 
   $totaal = 0;
 
@@ -79,7 +79,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>"); // artikel naam
           print("<td><a class='cart_button_small' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'>-</a></td>");                          // min knop
           print("<td class='cart_text_style'>" . $aantal . "</td>");                                                                                     // aantal producten
-          print("<td><a class='cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'>+</a></td>");                         // plus knop
+          print("<td><a class='cart_button_small extra_cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'>+</a></td>");                         // plus knop
           print("<td class='cart_text_style'>" . number_format((float)$PrijsPerStuk, 2, '.', '') . "</td>");       // prijs per stuk
           print("<td class='cart_text_style'>" . number_format((float)$prijs, 2, '.', '') . "</td>");              // prijs per stuk keer het aantal (subtotaal)
 
@@ -103,6 +103,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
     print("<div class='cart_buttons_box'>");
     print("<a href='cart.php?order=true' class='cart_button'>Bestellen</a>");
     print("<a href='index.php' class='cart_button'>Verder Winkelen</a>");
+    print("<th class='cart_text_style'></th>");
     print("</div>");
 
 
