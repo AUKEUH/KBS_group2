@@ -83,7 +83,10 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
+            <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?>
+              <div class="info_icon_block"><i class='fas fa-info-circle'></i></div>
+              <div class="show_info_block">Je product wordt niet gereserveerd. Dus koop je product snel!</div>
+            </div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
@@ -99,8 +102,6 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                                     }
                                     if (preg_replace('/\D/', '', $StockItem["QuantityOnHand"]) > $cart_aantal){ //checkt of het product nog op voorraad is
                                       ?><input type="submit" name="submit" value="Voeg toe aan winkelmand">
-                                      <div class="info_icon_block"><i class='fas fa-info-circle'></i></div>
-                                      <div class="show_info_block">Je product wordt niet gereserveerd. Dus koop je product snel!</div>
                                       <?php
                                     }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
                                       ?><div class="cart_button_hover"><input class='view_button_false' type="submit" name="submit" value="Voeg toe aan winkelmand"></div><?php

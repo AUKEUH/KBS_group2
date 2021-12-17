@@ -98,7 +98,7 @@ $databaseConnection = connectToDatabase();
 <?php
 if (isset ($_SESSION["username"])) {
     if ($_SESSION["login"] === TRUE) {
-        $userKorting = 2;
+        $userKorting = 0;
     } else {
         $userKorting = 0;
     }

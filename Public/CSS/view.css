@@ -18,6 +18,7 @@
   color: #606060;
   cursor: pointer;
   font-size: 26px;
+  display: inline-block;
 }
 
 .show_info_block{
