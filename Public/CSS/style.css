@@ -574,3 +574,7 @@ dl, ol, ul {
 .welkom_user_block{
     margin-left: 10px;
 }
+
+::placeholder {
+    color: #D3D3D3;
+}
