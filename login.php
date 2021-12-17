@@ -17,17 +17,25 @@ include "header.php";
     </form>
 
 <?php
-if (isset($_GET["submit"])){
-    if ($_GET["username"] === "inkoper" && $_GET["password"] === "spekkoper"){
-        $_SESSION["login"] = TRUE;
-        print "U bent ingelogd";
-        $_SESSION["username"] = $_GET["username"];
-    }else{
-        $_SESSION["login"] = FALSE;
-        print "De inlog gegevens zijn fout";
+if (isset($_GET['username'] )){
+    $conn = mysqli_connect('localhost', 'root', '', 'nerdygadgets', 3306);
+    $username = $_GET['username'];
+    $password = $_GET['password'];
+    $query = "select * from registratiedata where Emailadres = '$username'";
+    $resultSet = mysqli_query($conn, $query); //Syntax error: mysqli_query(connection,query);
+    if (mysqli_num_rows($resultSet) > 0) {
+        $row = mysqli_fetch_assoc($resultSet);
+        if ($row['Wachtwoord'] == $password) {
+            $_SESSION["login"] = TRUE;
+            print "U bent ingelogd";
+            $_SESSION["username"] = $_GET["username"];
+            $_SESSION["Voornaam"] = $row['Voornaam'];
+        } else {
+            $_SESSION["login"] = FALSE;
+            print "De inlog gegevens zijn fout";
+        }
     }
 }
-
 if (isset($_GET["logout"])){
     $_SESSION["login"] = FALSE;
     $_SESSION["username"] = '';
