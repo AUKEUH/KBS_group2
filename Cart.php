@@ -88,8 +88,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
               print("<td class='cart_button_hover'><a class='cart_button_small_false' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
           }
-          print("<td><a class='cart_button_small
-#' href='cart.php?delete=true&id=". ($stockitem["StockItemID"]) ."'> Verwijder </a></td>");
+          print("<td><a class='cart_button_small' href='cart.php?delete=true&id=". ($stockitem["StockItemID"]) ."'> Verwijder </a></td>");
           print("</tr>");
       }
   }
