@@ -32,7 +32,7 @@ $databaseConnection = connectToDatabase();
         if (isset ($_SESSION["username"])){
             if($_SESSION["login"] === TRUE){
                 // print "<div class='hallo_user'> Hallo"." ".$_SESSION["username"]."</div>";
-                $loginText = "Welkom ".$_SESSION["username"];
+                $loginText = "Welkom ".$_SESSION["Voornaam"];
             }else{
               $loginText = "inloggen";
             }
