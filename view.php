@@ -12,6 +12,13 @@ include __DIR__ . "/header.php";
 
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+function getVoorraadTekst($actueleVoorraad) {
+    if (filter_var($actueleVoorraad, FILTER_SANITIZE_NUMBER_INT) > 1000){
+        return "Ruime voorraad beschikbaar.";
+    }else{
+        return "$actueleVoorraad";
+    }
+  }
 ?>
 <div id="CenteredContent">
     <?php
@@ -83,7 +90,7 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?>
+            <div class="QuantityText"><?php print getVoorraadTekst($StockItem["QuantityOnHand"]); ?>
               <div class="info_icon_block"><i class='fas fa-info-circle'></i></div>
               <div class="show_info_block">Je product wordt niet gereserveerd. Dus koop je product snel!</div>
             </div>

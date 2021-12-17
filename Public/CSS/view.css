@@ -19,6 +19,7 @@
   cursor: pointer;
   font-size: 26px;
   display: inline-block;
+  margin-left: 10px;
 }
 
 .show_info_block{
@@ -31,6 +32,9 @@
   position: absolute;
   display: none;
   z-index: 2;
+  max-width: 180px;
+  margin-top: -190px;
+  margin-left: 85px;
 }
 
 .extra_cart_button_small{
