@@ -72,8 +72,10 @@ $databaseConnection = connectToDatabase();
 
                 $cart = getCart();
 
-
-                 $cart_count_display = count($cart);
+                $cart_count_display = 0;
+                foreach ($cart as $key => $aantal) {
+                  $cart_count_display += $aantal;
+                }
                  if ($cart_count_display > 0) {
                    print '<div class="cart_inhoud_count">'.$cart_count_display.'</div>';
                  }
