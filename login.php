@@ -10,8 +10,12 @@ include "header.php";
             <br>
             <label for="password">Wachtwoord:</label>
             <input type="password" name="password" id="password" required>
-            <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
-            <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
+            <?php if($_SESSION["login"] === TRUE) { ?>
+                <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
+            <?php }
+            else { ?>
+                <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
+             <?php } ?>
             <br>
             <a href="register.php" class="HrefDecoration">Ik heb nog geen account</a>
         </form>
