@@ -12,7 +12,7 @@ include "header.php";
         <input type="text" placeholder="Janssen" name="achternaam" id="password" required>
         <br>
         <label for="geboorte">Geboortedatum*:</label>
-        <input type="text" placeholder="02-21-1993" name="geboorte" id="geboorte" required>
+        <input type="date" placeholder="02-21-1993" name="geboorte" id="geboorte" required>
         <br>
         <label for="emailadres">Emailadres*:</label>
         <input type="text" placeholder="example@outlook.com" name="emailadres" id="emailadres" required>
