@@ -2,6 +2,7 @@
 <?php
 session_start();
 include "database.php";
+include "cartfuncties.php";
 $databaseConnection = connectToDatabase();
 ?>
 <!DOCTYPE html>
@@ -10,8 +11,8 @@ $databaseConnection = connectToDatabase();
     <title>NerdyGadgets</title>
 
     <!-- Javascript -->
-    <script src="Public/JS/fontawesome.js"></script>
     <script src="Public/JS/jquery.min.js"></script>
+    <script src="Public/JS/fontawesome.js"></script>
     <script src="Public/JS/bootstrap.min.js"></script>
     <script src="Public/JS/popper.min.js"></script>
     <script src="Public/JS/resizer.js"></script>
@@ -21,6 +22,8 @@ $databaseConnection = connectToDatabase();
     <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/view.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/typekit.css">
+    <link rel="icon" type="image/x-icon" href="public/Img/main-logo.png">
+
 </head>
 <body>
 <div class="Background">
@@ -67,6 +70,19 @@ $databaseConnection = connectToDatabase();
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search nav-icon"></i> Zoeken</a>
             </li>
             <li>
+                <?php
+
+                $cart = getCart();
+
+                $cart_count_display = 0;
+                foreach ($cart as $key => $aantal) {
+                  $cart_count_display += $aantal;
+                }
+                 if ($cart_count_display > 0) {
+                   print '<div class="cart_inhoud_count">'.$cart_count_display.'</div>';
+                 }
+                 ?>
+
                 <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
             </li>
             <li>
@@ -84,7 +100,7 @@ $databaseConnection = connectToDatabase();
 <?php
 if (isset ($_SESSION["username"])) {
     if ($_SESSION["login"] === TRUE) {
-        $userKorting = 2;
+        $userKorting = 0;
     } else {
         $userKorting = 0;
     }

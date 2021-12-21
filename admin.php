@@ -6,7 +6,6 @@ include "header.php";
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <style link rel="public/css/mijn.css" type="text/css"></style>
     <title>Admin</title>
 </head>
 <body>

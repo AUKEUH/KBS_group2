@@ -11,31 +11,30 @@ include "header.php";
         <label for="password">Achternaam*:</label>
         <input type="text" placeholder="Janssen" name="achternaam" id="password" required>
         <br>
-        <label for="username">Geboortedatum*:</label>
-        <input type="text" placeholder="02-21-1993" name="geboorte" id="username" required>
+        <label for="geboorte">Geboortedatum*:</label>
+        <input type="date" placeholder="02-21-1993" name="geboorte" id="geboorte" required>
         <br>
-        <label for="username">Emailadres*:</label>
-        <input type="text" placeholder="example@outlook.com" name="emailadres" id="username" required>
+        <label for="emailadres">Emailadres*:</label>
+        <input type="email" placeholder="example@outlook.com" name="emailadres" id="emailadres" required>
         <br>
-        <label for="username">Telefoonnummer:</label>
-        <input type="text" placeholder="0612345678" name="telefoonnummer" id="username">
+        <label for="telefoonnummer">Telefoonnummer:</label>
+        <input type="tel" placeholder="0612345678" name="telefoonnummer" id="telefoonnummer">
         <br>
-        <label for="username">Straat*:</label>
-        <input type="text" placeholder="Romeostraat" name="straat" id="username" required>
+        <label for="straat">Straat*:</label>
+        <input type="text" placeholder="Romeostraat" name="straat" id="straat" required>
         <br>
-        <label for="username">Huisnummer*:</label>
-        <input type="text" placeholder="13b" name="huisnummer" id="username" required>
+        <label for="huisnummer">Huisnummer*:</label>
+        <input type="text" placeholder="13b" name="huisnummer" id="huisnummer" required>
         <br>
-        <label for="username">Postcode*:</label>
-        <input type="text" placeholder="1234AB" name="postcode" id="username" required>
+        <label for="postcode">Postcode*:</label>
+        <input type="text" placeholder="1234AB" name="postcode" id="postcode" required>
         <br>
-        <label for="username">Plaats*:</label>
-        <input type="text" placeholder="Zwolle" name="plaats" id="username" required>
+        <label for="plaats">Plaats*:</label>
+        <input type="text" placeholder="Zwolle" name="plaats" id="plaats" required>
         <br>
-        <label for="username">Wachtwoord*:</label>
-        <input type="password" min="8" name="wachtwoord" id="username" required>
+        <label for="wachtwoord">Wachtwoord*:</label>
+        <input type="password" min="8" name="wachtwoord" id="wachtwoord" required>
         <button type="submit" name="submit" class="btn  mt-2 btn-primary">Regristreren</button>
         <br>
         <a href="login.php" class="HrefDecoration">Ik heb al een account</a>
     </form>
-

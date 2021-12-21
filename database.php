@@ -151,8 +151,10 @@ function placeOrder($cart, $databaseConnection) {
         $last_id = mysqli_insert_id($databaseConnection);
 
         foreach ($cart as $productId => $quantity) {
+          if ($quantity > 0) {
             $q3 = "INSERT INTO bestelling_lines (BestellingID, ProductID, quantity) VALUES ('$last_id', '$productId', '$quantity');";
             mysqli_query($databaseConnection, $q3);
+          }
         }
     }
     $_SESSION['cart'] = array();
