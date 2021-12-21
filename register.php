@@ -5,34 +5,34 @@ include "header.php";
     <h1>Regristreren</h1>
 
     <form method="POST" action="ophalendata/insert.php">
-        <label for="username">Voornaam* (voorvoegsel):</label>
+        <label for="Voornaam">Voornaam* (voorvoegsel):</label>
         <input type="text" placeholder="Henk" name="voornaam" id="username" required>
         <br>
-        <label for="password">Achternaam*:</label>
+        <label for="Achternaam">Achternaam*:</label>
         <input type="text" placeholder="Janssen" name="achternaam" id="password" required>
         <br>
-        <label for="username">Geboortedatum*:</label>
+        <label for="Geboortedatum">Geboortedatum*:</label>
         <input type="text" placeholder="02-21-1993" name="geboorte" id="username" required>
         <br>
-        <label for="username">Emailadres*:</label>
+        <label for="Emailadres">Emailadres*:</label>
         <input type="text" placeholder="example@outlook.com" name="emailadres" id="username" required>
         <br>
-        <label for="username">Telefoonnummer:</label>
+        <label for="Telefoonnummer">Telefoonnummer:</label>
         <input type="text" placeholder="0612345678" name="telefoonnummer" id="username">
         <br>
-        <label for="username">Straat*:</label>
+        <label for="Straat">Straat*:</label>
         <input type="text" placeholder="Romeostraat" name="straat" id="username" required>
         <br>
-        <label for="username">Huisnummer*:</label>
+        <label for="HUisnummer">Huisnummer*:</label>
         <input type="text" placeholder="13b" name="huisnummer" id="username" required>
         <br>
-        <label for="username">Postcode*:</label>
+        <label for="Postcode">Postcode*:</label>
         <input type="text" placeholder="1234AB" name="postcode" id="username" required>
         <br>
-        <label for="username">Plaats*:</label>
+        <label for="Plaats">Plaats*:</label>
         <input type="text" placeholder="Zwolle" name="plaats" id="username" required>
         <br>
-        <label for="username">Wachtwoord*:</label>
+        <label for="Wachtwoord">Wachtwoord*:</label>
         <input type="password" min="8" name="wachtwoord" id="username" required>
         <button type="submit" name="submit" class="btn  mt-2 btn-primary">Regristreren</button>
         <br>
