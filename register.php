@@ -15,10 +15,10 @@ include "header.php";
         <input type="date" placeholder="02-21-1993" name="geboorte" id="geboorte" required>
         <br>
         <label for="emailadres">Emailadres*:</label>
-        <input type="text" placeholder="example@outlook.com" name="emailadres" id="emailadres" required>
+        <input type="email" placeholder="example@outlook.com" name="emailadres" id="emailadres" required>
         <br>
         <label for="telefoonnummer">Telefoonnummer:</label>
-        <input type="text" placeholder="0612345678" name="telefoonnummer" id="telefoonnummer">
+        <input type="tel" placeholder="0612345678" name="telefoonnummer" id="telefoonnummer">
         <br>
         <label for="straat">Straat*:</label>
         <input type="text" placeholder="Romeostraat" name="straat" id="straat" required>
