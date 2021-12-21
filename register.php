@@ -5,37 +5,36 @@ include "header.php";
     <h1>Regristreren</h1>
 
     <form method="POST" action="ophalendata/insert.php">
-        <label for="Voornaam">Voornaam* (voorvoegsel):</label>
+        <label for="username">Voornaam* (voorvoegsel):</label>
         <input type="text" placeholder="Henk" name="voornaam" id="username" required>
         <br>
-        <label for="Achternaam">Achternaam*:</label>
+        <label for="password">Achternaam*:</label>
         <input type="text" placeholder="Janssen" name="achternaam" id="password" required>
         <br>
-        <label for="Geboortedatum">Geboortedatum*:</label>
-        <input type="text" placeholder="02-21-1993" name="geboorte" id="username" required>
+        <label for="geboorte">Geboortedatum*:</label>
+        <input type="text" placeholder="02-21-1993" name="geboorte" id="geboorte" required>
         <br>
-        <label for="Emailadres">Emailadres*:</label>
-        <input type="text" placeholder="example@outlook.com" name="emailadres" id="username" required>
+        <label for="emailadres">Emailadres*:</label>
+        <input type="text" placeholder="example@outlook.com" name="emailadres" id="emailadres" required>
         <br>
-        <label for="Telefoonnummer">Telefoonnummer:</label>
-        <input type="text" placeholder="0612345678" name="telefoonnummer" id="username">
+        <label for="telefoonnummer">Telefoonnummer:</label>
+        <input type="text" placeholder="0612345678" name="telefoonnummer" id="telefoonnummer">
         <br>
-        <label for="Straat">Straat*:</label>
-        <input type="text" placeholder="Romeostraat" name="straat" id="username" required>
+        <label for="straat">Straat*:</label>
+        <input type="text" placeholder="Romeostraat" name="straat" id="straat" required>
         <br>
-        <label for="HUisnummer">Huisnummer*:</label>
-        <input type="text" placeholder="13b" name="huisnummer" id="username" required>
+        <label for="huisnummer">Huisnummer*:</label>
+        <input type="text" placeholder="13b" name="huisnummer" id="huisnummer" required>
         <br>
-        <label for="Postcode">Postcode*:</label>
-        <input type="text" placeholder="1234AB" name="postcode" id="username" required>
+        <label for="postcode">Postcode*:</label>
+        <input type="text" placeholder="1234AB" name="postcode" id="postcode" required>
         <br>
-        <label for="Plaats">Plaats*:</label>
-        <input type="text" placeholder="Zwolle" name="plaats" id="username" required>
+        <label for="plaats">Plaats*:</label>
+        <input type="text" placeholder="Zwolle" name="plaats" id="plaats" required>
         <br>
-        <label for="Wachtwoord">Wachtwoord*:</label>
-        <input type="password" min="8" name="wachtwoord" id="username" required>
+        <label for="wachtwoord">Wachtwoord*:</label>
+        <input type="password" min="8" name="wachtwoord" id="wachtwoord" required>
         <button type="submit" name="submit" class="btn  mt-2 btn-primary">Regristreren</button>
         <br>
         <a href="login.php" class="HrefDecoration">Ik heb al een account</a>
     </form>
-
