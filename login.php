@@ -25,12 +25,13 @@ if (isset($_GET['username'] )){
     $resultSet = mysqli_query($conn, $query); //Syntax error: mysqli_query(connection,query);
     if (mysqli_num_rows($resultSet) > 0) {
         $row = mysqli_fetch_assoc($resultSet);
-        if ($row['Wachtwoord'] == $password) {
+        if (password_verify(hash('sha512', $password), $row['Wachtwoord'])) {
             $_SESSION["login"] = TRUE;
             print "U bent ingelogd";
             $_SESSION["username"] = $_GET["username"];
             $_SESSION["Voornaam"] = $row['Voornaam'];
-        } else {
+        }
+        else {
             $_SESSION["login"] = FALSE;
             print "De inlog gegevens zijn fout";
         }
