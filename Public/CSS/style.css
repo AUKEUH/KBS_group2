@@ -595,3 +595,7 @@ dl, ol, ul {
   margin-right: 5px;
   margin-top: 10px;
 }
+::placeholder {
+    color: #D3D3D3;
+}
+
