@@ -12,8 +12,10 @@ $postcode = $_POST["postcode"];
 $plaats = $_POST["plaats"];
 $wachtwoord = $_POST["wachtwoord"];
 
+$hashed = password_hash(hash('sha512', $wachtwoord), PASSWORD_DEFAULT);
+
 $sql = "INSERT INTO `registratiedata`(`Voornaam`, `Achternaam`, `Geboortedatum`, `Emailadres`, `Telefoonnummer`, `Straat`, `Huisnummer`, `Postcode`, `Plaats`,`Wachtwoord`)
-        VALUES ('$voornaam','$achternaam','$geboorte','$emailadres','$telefoonnummer','$straat','$huisnummer','$postcode','$plaats','$wachtwoord')";
+        VALUES ('$voornaam','$achternaam','$geboorte','$emailadres','$telefoonnummer','$straat','$huisnummer','$postcode','$plaats','$hashed')";
 
 $statement = mysqli_prepare($connection, $sql);
 // mysqli_stmt_bind_param($statement, 'i', $gebruikersinput);
