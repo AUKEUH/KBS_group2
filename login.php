@@ -27,9 +27,9 @@ if (isset($_GET['username'] )){
         $row = mysqli_fetch_assoc($resultSet);
         if (password_verify(hash('sha512', $password), $row['Wachtwoord'])) {
             $_SESSION["login"] = TRUE;
-            print "U bent ingelogd";
             $_SESSION["username"] = $_GET["username"];
             $_SESSION["Voornaam"] = $row['Voornaam'];
+            header("Refresh:0; url=index.php");
         }
         else {
             $_SESSION["login"] = FALSE;
