@@ -369,7 +369,20 @@ if (isset($amount)) {
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php } 
+                $HeaderStockGroups = getHeaderStockGroups($databaseConnection);
+                print "<ul style='display: block; margin: 45px auto;'>";
+                foreach ($HeaderStockGroups as $HeaderStockGroup) {
+                    ?>
+
+                    <li style="list-style-type: none; display: inline-block; margin-left: 15px;">
+                        <a style="text-decoration: none; color: white; font-size: 24px; font-weight: bold;" href="browse.php?category_id=<?php print $HeaderStockGroup['StockGroupID']; ?>"
+                           style=""><?php print $HeaderStockGroup['StockGroupName']; ?></a>
+                    </li>
+                    <?php
+                }
+                print "</ul>";
+                ?>
             </div>
         
         <?php
