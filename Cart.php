@@ -9,7 +9,7 @@ include "header.php";
     <title>Winkelmand</title>
 </head>
 <body>
-  <h1 class="winkelwagen_titel">Winkelmand</h1>
+  <h1 class="winkelwagen_titel">Winkelmand (stap 1/3)</h1>
 <?php
 
 // komt door merge conflict (waarschijnlijk useless)
@@ -57,6 +57,9 @@ if (isset($_GET["order"])) {              // zelfafhandelend formulier
 $cart = getCart();
 // print_r($cart);
 
+?>
+<?php
+
 if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
     print('<table class="table table-dark">');
     print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th></th><th>Aantal</th><th></th><th>Prijs per stuk</th><th>Subtotaal</th><th></th><tr>');
@@ -101,7 +104,9 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
     print("<th class='cart_text_style'></th>");
     print("<th class='cart_text_style'></th>");
     print("<div class='cart_buttons_box'>");
-    print("<a href='cart.php?order=true' class='cart_button'>Bestellen</a>");
+    if($_SESSION['login']){
+        print("<a href='cart.php?order=true' class='cart_button'>Bestellen</a>");
+    }
     print("<a href='index.php' class='cart_button'>Verder Winkelen</a>");
     print("<th class='cart_text_style'></th>");
     print("</div>");
@@ -110,12 +115,20 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
 
 }else if(isset($_GET['order-success'])){
     if( $_GET['order-success'] == true ) {
-    print('<h3 syle="text-align: center; margin-top: 250px;">Uw bestelling is succesvol ontvangen!</h3>');
+    print('<h3 syle="text-align: center; margin-top: 250px;">Uw bestelling is succesvol ontvangen! (3/3)</h3>');
     print('<a href="index.php" class="cart_button">Terug naar Home</a>');
     }
   }
   else {
     print('<h3>Uw winkelmand is leeg!</h3>');
+  }
+
+  if(isset($_SESSION['registerError']) | !$_SESSION['login']){
+      print('<div style="text-align: center; padding: 50px 0;">');
+      print('<h3 style="color: white;">Uw hoort ingelogd te zijn om een bestelling te kunnen plaatsen 🙂</h3>');
+      print('<a href="login.php" class="cart_button" style=" margin-top: 10px;">Inloggen</a>');
+      print('<a href="register.php" class="cart_button" style="margin-bottom: 30px;">Registreren</a> <br>');
+      print('</div>');
   }
 ?>
 

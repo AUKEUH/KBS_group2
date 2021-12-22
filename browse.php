@@ -196,6 +196,27 @@ if (isset($amount)) {
     function berekenVerkoopPrijs($adviesPrijs, $btw) {
 		return $btw * $adviesPrijs / 100 + $adviesPrijs;
     }
+
+    function getRandomProducts() {
+        global $databaseConnection;
+        $query = "SELECT * from StockItems ORDER BY RAND() LIMIT 6";
+        $statement = mysqli_prepare($databaseConnection, $query);
+        mysqli_stmt_execute($statement);
+        $response = mysqli_stmt_get_result($statement);
+        $response = mysqli_fetch_all($response, MYSQLI_ASSOC);
+        return $response;
+    }
+
+    function getImageByStockItemId($id) {
+        global $databaseConnection;
+        $query = "SELECT ImagePath from stockitemimages WHERE StockItemID = ? LIMIT 1";
+        $statement = mysqli_prepare($databaseConnection, $query);
+        mysqli_stmt_bind_param($statement, "i", $id);
+        mysqli_stmt_execute($statement);
+        $response = mysqli_stmt_get_result($statement);
+        $response = mysqli_fetch_all($response, MYSQLI_ASSOC);
+        return $response;
+    }
 ?>
 
 <!-- code deel 3 van User story: Zoeken producten : de html -->
@@ -330,8 +351,27 @@ if (isset($amount)) {
     } else {
         ?>
         <h2 id="NoSearchResults">
-            Yarr, er zijn geen resultaten gevonden.
+            Yarr, er zijn geen resultaten gevonden. Wellicht heb je hier wat aan:
         </h2>
+        <div class="container">
+            <div class="row" style="color: white;">
+                <?php
+                foreach (getRandomProducts() as $row) {
+                    ?>
+                    <div class="col-sm-4">
+                        <div class="card" style="background-color: rgb(22 22 36); margin-top: 15px; min-height: 400px;">
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align: center; margin: 15px 0;"><?php print $row["StockItemName"] ?></h5>
+                                <img src="Public/StockItemIMG/<?php print getImageByStockItemId($row["StockItemID"])[0]['ImagePath'] ?>" style="max-width: 70%; max-height: 200px; padding: 0 30px; margin: 0 auto; display: block;" alt="">
+                                <p class="card-text" style="font-size: 24px; font-weight: bold; position: absolute; bottom: 50px; left: 30px;">€ <?php print str_replace(".", ",", berekenVerkoopPrijs($row["UnitPrice"],  $row["UnitPrice"])) ?></p>
+                                <a href="view.php?id=<?php print $row["StockItemID"]; ?>" class="btn btn-primary" style="width: 100%; position: absolute; bottom: 0; left: 0;">Bekijk
+                                    product</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        
         <?php
     }
     ?>

@@ -4,6 +4,11 @@ session_start();
 include "database.php";
 include "cartfuncties.php";
 $databaseConnection = connectToDatabase();
+
+if(!isset($_SESSION['login'])){
+    $_SESSION['login'] = FALSE;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

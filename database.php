@@ -145,19 +145,25 @@ function getStockItemImage($id, $databaseConnection) {
 
 function placeOrder($cart, $databaseConnection) {
     // Maak dit dynamisch zodra registratie/login werkt door de ID van gebruiker op te halen.
-    $sql = "INSERT INTO bestellingen (PersonID) VALUES (10);";
+    if($_SESSION["login"]){
+        if(isset($_SESSION['RegistratieId'])){
+            $sql = "INSERT INTO bestellingen (PersonID) VALUES (". $_SESSION['RegistratieId'] .");";
 
-    if(mysqli_query($databaseConnection, $sql)){
-        $last_id = mysqli_insert_id($databaseConnection);
+            if(mysqli_query($databaseConnection, $sql)){
+                $last_id = mysqli_insert_id($databaseConnection);
 
-        foreach ($cart as $productId => $quantity) {
-          if ($quantity > 0) {
-            $q3 = "INSERT INTO bestelling_lines (BestellingID, ProductID, quantity) VALUES ('$last_id', '$productId', '$quantity');";
-            mysqli_query($databaseConnection, $q3);
-          }
+                foreach ($cart as $productId => $quantity) {
+                if ($quantity > 0) {
+                    $q3 = "INSERT INTO bestelling_lines (BestellingID, ProductID, quantity) VALUES ('$last_id', '$productId', '$quantity');";
+                    mysqli_query($databaseConnection, $q3);
+                }
+                }
+            }
+            $_SESSION['cart'] = array();    
         }
+    } else{
+        $_SESSION['registerError'] = "Uw hoort ingelogd te zijn om een bestelling te kunnen plaatsen.";
     }
-    $_SESSION['cart'] = array();
 }
 
 function updateStock($cart, $databaseConnection) {

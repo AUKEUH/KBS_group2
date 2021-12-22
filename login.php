@@ -2,7 +2,7 @@
 include "header.php";
 ?>
     <div id="CenteredContent">
-        <h1>Inloggen</h1>
+        <h1>Inloggen (2/3)</h1>
 
         <form method="GET" action="login.php">
             <label for="username">Emailadres:</label>
@@ -10,12 +10,8 @@ include "header.php";
             <br>
             <label for="password">Wachtwoord:</label>
             <input type="password" name="password" id="password" required>
-            <?php if($_SESSION["login"] === TRUE) { ?>
-                <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
-            <?php }
-            else { ?>
-                <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
-             <?php } ?>
+            <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
+            <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
             <br>
             <a href="register.php" class="HrefDecoration">Ik heb nog geen account</a>
         </form>
@@ -29,13 +25,13 @@ if (isset($_GET['username'] )){
     $resultSet = mysqli_query($conn, $query); //Syntax error: mysqli_query(connection,query);
     if (mysqli_num_rows($resultSet) > 0) {
         $row = mysqli_fetch_assoc($resultSet);
-        if (password_verify(hash('sha512', $password), $row['Wachtwoord'])) {
+        if ($row['Wachtwoord'] == $password) {
             $_SESSION["login"] = TRUE;
+            print "U bent ingelogd";
             $_SESSION["username"] = $_GET["username"];
             $_SESSION["Voornaam"] = $row['Voornaam'];
-            header("Refresh:0; url=index.php");
-        }
-        else {
+            $_SESSION["RegistratieId"] = $row['RegistratieId'];
+        } else {
             $_SESSION["login"] = FALSE;
             print "De inlog gegevens zijn fout";
         }
