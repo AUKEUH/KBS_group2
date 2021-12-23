@@ -22,4 +22,4 @@ $statement = mysqli_prepare($connection, $sql);
 mysqli_stmt_execute($statement);
 $result = mysqli_stmt_get_result($statement);
 
-header("Refresh:0; url=http://localhost/git/KBS_group2/login.php");
+header("Refresh:0; url=../login.php");
