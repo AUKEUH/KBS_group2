@@ -1,5 +1,4 @@
 <?php
-
 function getCart(){
     if(isset($_SESSION['cart'])){               //controleren of winkelmandje (=cart) al bestaat
         $cart = $_SESSION['cart'];                  //zo ja:  ophalen
@@ -58,6 +57,23 @@ function minProductToCart($stockItemID){
     }
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
+}
+
+
+if (isset($_GET["changeProductToCart"])) {              // zelfafhandelend formulier
+    $cart = getCart();    // eerst de huidige cart ophalen
+
+    $changevalue = $_GET['input_value'];
+    $stockItemID = $_GET['stockId'];
+    $thisQuantityOnHand = $_GET['QuantityOnHand'];
+
+    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
+      if ($thisQuantityOnHand > $changevalue) {      //Kan je niet minder dan 0 aantal hebben
+        $cart[$stockItemID] = $changevalue;
+      }
+    }
+    saveCart($cart);
+    header("Refresh:0; url=cart.php");
 }
 
 function saveOrder($databaseConnection){

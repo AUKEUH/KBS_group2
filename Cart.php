@@ -1,14 +1,7 @@
 <?php
 include "header.php";
 ?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <style link rel="public/css/mijn.css" type="text/css"></style>
-    <title>Winkelmand</title>
-</head>
-<body>
+
   <h1 class="winkelwagen_titel">Winkelmand (stap 1/3)</h1>
 <?php
 
@@ -77,14 +70,16 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           $prijs = $aantal * ($stockitem["SellPrice"]- $userKorting);
           $PrijsPerStuk = $stockitem["SellPrice"];
           $totaal = $totaal += $prijs;
+          $thisQuantityOnHand = preg_replace('/\D/', '', $stockitem["QuantityOnHand"]);
           print("<tr>");
+          print("<input type='hidden' id='quantityOnHand".($stockitem["StockItemID"])."' value='".$thisQuantityOnHand."'>");
           if(isset($StockItemImage[0]['ImagePath'])){
             print("<td><img style='width:120px;' src='Public/StockItemIMG/".$StockItemImage[0]['ImagePath']."'></td>");
           }
           print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>"); // artikel naam
           print("<td><a class='cart_button_small' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'>-</a></td>");                          // min knop
-          print("<td class='cart_text_style'>" . $aantal . "</td>");                                                                                     // aantal producten
-          if (preg_replace('/\D/', '', $stockitem["QuantityOnHand"]) > $aantal){ //checkt of het product nog op voorraad is
+          print("<td class='cart_text_style'><input step='0.01' id='" . ($stockitem["StockItemID"]) . "' type='text' maxlength='3' class='cart_input_style' value='" . $aantal . "'></td>");                                                                                     // aantal producten
+          if ($thisQuantityOnHand > $aantal){ //checkt of het product nog op voorraad is
                print("<td><a class='cart_button_small extra_cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
           }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
               print("<td class='cart_button_hover'><a class='cart_button_small_false extra_cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
@@ -138,3 +133,4 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
 </div> -->
 </body>
 </html>
+<script src="Public/JS/custom.js"></script>

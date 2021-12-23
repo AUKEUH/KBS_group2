@@ -697,3 +697,13 @@ dl, ol, ul {
   text-align: left;
   margin-right: 1%;
 }
+
+.cart_input_style{
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  background-color: #23232F;
+  border: 1px solid white;
+  color: white;
+  margin-left: -20px;
+}
