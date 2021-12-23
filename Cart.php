@@ -84,15 +84,13 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>"); // artikel naam
           print("<td><a class='cart_button_small' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'>-</a></td>");                          // min knop
           print("<td class='cart_text_style'>" . $aantal . "</td>");                                                                                     // aantal producten
-          print("<td><a class='cart_button_small extra_cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'>+</a></td>");                         // plus knop
-          print("<td class='cart_text_style'>" . number_format((float)$PrijsPerStuk, 2, '.', '') . "</td>");       // prijs per stuk
-          print("<td class='cart_text_style'>" . number_format((float)$prijs, 2, '.', '') . "</td>");              // prijs per stuk keer het aantal (subtotaal)
-
           if (preg_replace('/\D/', '', $stockitem["QuantityOnHand"]) > $aantal){ //checkt of het product nog op voorraad is
-//                print("<td><a class='cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
+               print("<td><a class='cart_button_small extra_cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
           }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
-              print("<td class='cart_button_hover'><a class='cart_button_small_false' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
+              print("<td class='cart_button_hover'><a class='cart_button_small_false extra_cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
           }
+          print("<td class='cart_text_style'>" . str_replace('.', ',', sprintf("€ %.2f", number_format((float)$PrijsPerStuk, 2, '.', ''))) . "</td>");       // prijs per stuk
+          print("<td class='cart_text_style'>" . str_replace('.', ',', sprintf("€ %.2f", number_format((float)$prijs, 2, '.', ''))) . "</td>");              // prijs per stuk keer het aantal (subtotaal)
           print("<td><a class='cart_button_small' href='cart.php?delete=true&id=". ($stockitem["StockItemID"]) ."'> Verwijder </a></td>");
           print("</tr>");
       }

@@ -9,6 +9,7 @@ if(!isset($_SESSION['login'])){
     $_SESSION['login'] = FALSE;
 }
 
+print ("<h1>" . $_SESSION["RegistratieId"]."</h1>");
 ?>
 <!DOCTYPE html>
 <html lang="en">
