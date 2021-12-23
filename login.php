@@ -11,10 +11,10 @@ include "header.php";
         <label for="password">Wachtwoord:</label>
         <input type="password" name="password" id="password" required>
         <?php if($_SESSION["login"] === TRUE) { ?>
-            <a href='login.php?logout=true' class="btn  mt-2 btn-primary">Log out</a>
+            <a class="logoutbutton" href='login.php?logout=true' >Uitloggen</a>
         <?php }
         else { ?>
-            <button type="submit" name="submit" class="btn  mt-2 btn-primary">Log in</button>
+            <button class="loginbutton" type="submit" name="submit" class="btn  mt-2 btn-primary">Inloggen</button>
         <?php } ?>
         <br>
         <a href="register.php" class="HrefDecoration">Ik heb nog geen account</a>
@@ -26,7 +26,9 @@ if (isset($_GET['username'] )){
     $username = $_GET['username'];
     $password = $_GET['password'];
     $query = "select * from registratiedata where Emailadres = '$username'";
-    $resultSet = mysqli_query($conn, $query); //Syntax error: mysqli_query(connection,query);
+    $statement = mysqli_prepare($conn, $query);
+    mysqli_stmt_execute($statement);
+    $resultSet = mysqli_stmt_get_result($statement);
     if (mysqli_num_rows($resultSet) > 0) {
         $row = mysqli_fetch_assoc($resultSet);
         if (password_verify(hash('sha512', $password), $row['Wachtwoord'])) {
