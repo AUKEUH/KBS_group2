@@ -384,7 +384,7 @@ if (isset($amount)) {
                 print "</ul>";
                 ?>
             </div>
-        
+        </div>
         <?php
     }
     ?>
