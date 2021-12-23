@@ -18,7 +18,7 @@ include "header.php";
         <input type="email" placeholder="example@outlook.com" name="emailadres" id="emailadres" required>
         <br>
         <label for="telefoonnummer">Telefoonnummer:</label>
-        <input type="tel" placeholder="0612345678" name="telefoonnummer" id="telefoonnummer">
+        <input type="number" placeholder="0612345678" name="telefoonnummer" id="telefoonnummer">
         <br>
         <label for="straat">Straat*:</label>
         <input type="text" placeholder="Romeostraat" name="straat" id="straat" required>
