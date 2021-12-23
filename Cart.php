@@ -1,8 +1,7 @@
 <?php
 include "header.php";
 ?>
-
-  <h1 class="winkelwagen_titel">Winkelmand (stap 1/3)</h1>
+  <h1 class="winkelwagen_titel">Winkelmand <?php if(!$_SESSION['login']){ echo "(Stap 1/3)"; } ?></h1>
 <?php
 
 // komt door merge conflict (waarschijnlijk useless)

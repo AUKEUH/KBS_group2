@@ -1,0 +1,1 @@
+/* SQL voor coldtemperatures trigger volgt */
