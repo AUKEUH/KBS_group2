@@ -13,9 +13,9 @@ function getRandomProducts() {
     // Haalt het resultaat van het statement op.
     $response = mysqli_stmt_get_result($statement);
     // Haalt het resultaat op als een array.
-    $response = mysqli_fetch_all($response, MYSQLI_ASSOC);
-    return $response;
+    return mysqli_fetch_all($response, MYSQLI_ASSOC);
 }
+
 /*
 Functie haalt product op op basis van het StockItemID. 
 */
@@ -39,12 +39,11 @@ function getImageByStockItemId($id) {
 }
 
 function berekenVerkoopPrijs($adviesPrijs, $btw) {
-    return $btw * $adviesPrijs / 100 + $adviesPrijs;
+    return $btw * $adviesPrijs / 100 + $adviesPrijs;    
 }
 
 ?>
-
-<h2 id="NoSearchResults">
+<h2 id="NoSearchResults" style="height: 80px;">
     Yarr, we hebben deze pagina niet kunnen vinden! Wellicht heb je hier wat aan:
 </h2>
 <div class="container">
