@@ -1,1 +1,2 @@
-/* SQL voor coldtemperatures trigger volgt */
+CREATE TRIGGER `archieve_coldroomtemperatures` AFTER INSERT ON `coldroomtemperatures`
+ FOR EACH ROW INSERT INTO coldroomtemperatures_archive (ColdRoomTemperatureID, ColdRoomSensorNumber, RecordedWhen, Temperature, ValidFrom, ValidTo) VALUES (new.ColdRoomTemperatureID, new.ColdRoomSensorNumber, new.RecordedWhen, new.Temperature, new.ValidFrom, new.ValidTo)

@@ -350,7 +350,7 @@ if (isset($amount)) {
         <?php
     } else {
         ?>
-        <h2 id="NoSearchResults">
+        <h2 id="NoSearchResults" style="height: 80px;">
             Yarr, er zijn geen resultaten gevonden. Wellicht heb je hier wat aan:
         </h2>
         <div class="container">
