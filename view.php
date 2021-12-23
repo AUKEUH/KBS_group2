@@ -10,8 +10,15 @@ include "CartFuncties.php";
     <title>Artikelpagina (geef ?id=.. mee)</title>
 </head>
 <body>
-
 <?php
+$query = "SELECT Temperature FROM coldroomtemperatures ORDER BY ColdRoomTemperatureID DESC";
+$statement = mysqli_prepare($databaseConnection, $query);
+mysqli_stmt_execute($statement);
+$result = mysqli_stmt_get_result($statement);
+$result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+
+
     //?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
     if (isset($_GET["id"])) {
         $stockItemID = $_GET["id"];
@@ -99,6 +106,11 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
+
+            <?php
+            echo "De huidige temperatuur van dit product: " . $result[0]['Temperature']; ?>
+
+
             <div class="QuantityText"><?php print $StockItem['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
