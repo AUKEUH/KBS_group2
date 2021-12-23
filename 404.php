@@ -70,7 +70,7 @@ function berekenVerkoopPrijs($adviesPrijs, $btw) {
             </div>
         <?php } 
 
-        // Basically dezelfde implementatie als in header.php
+        // Basically dezelfde implementatie als in 
         $HeaderStockGroups = getHeaderStockGroups($databaseConnection);
         print "<ul style='display: block; margin: 45px auto;'>";
         foreach ($HeaderStockGroups as $HeaderStockGroup) {
