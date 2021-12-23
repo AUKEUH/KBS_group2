@@ -27,6 +27,7 @@ print ("<h1>" . $_SESSION["RegistratieId"]."</h1>");
     <link rel="stylesheet" href="Public/CSS/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/view.css" type="text/css">
+    <link rel="stylesheet" href="Public/CSS/bar.css" type="text/css">
     <link rel="stylesheet" href="Public/CSS/typekit.css">
     <link rel="icon" type="image/x-icon" href="public/Img/main-logo.png">
 

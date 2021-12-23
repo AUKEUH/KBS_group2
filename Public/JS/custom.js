@@ -33,3 +33,18 @@ $(".cart_input_style").keyup(function(event) { //trigger event voor enter in val
 function sendDate(stockId, input_value, quantityOnHand){
   window.location.replace('Cart.php?changeProductToCart=true&input_value='+input_value+'&stockId='+stockId+'&QuantityOnHand='+quantityOnHand);
 }
+
+
+$("#ja").click(function() {
+  $("#block_nee").slideUp(200);
+  $("#block_ja").slideDown(200);
+  $(".adres_button_box_nee").hide(10);
+  $(".adres_button_box_ja").show(10);
+});
+
+$("#nee").click(function() {
+  $("#block_ja").slideUp(200);
+  $("#block_nee").slideDown(200);
+  $(".adres_button_box_nee").show(10);
+  $(".adres_button_box_ja").hide(10);
+});

@@ -96,6 +96,24 @@ function getStockItemImage($id, $databaseConnection) {
     return $R;
 }
 
+function getUser($databaseConnection) {
+
+    $Query = "SELECT
+      *
+    FROM
+      `registratiedata`
+    WHERE
+      registratieId = ?";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $_SESSION['RegistratieId']);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
+    return $R;
+}
+
 // placeOrderRow($cart, $databaseConnection){
 //     $Query = "INSERT INTO orders (CustomerID, OrderDate, OrderStatus, OrderTotal) VALUES (?, ?, ?, ?)";
 //     $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -159,7 +177,7 @@ function placeOrder($cart, $databaseConnection) {
                 }
                 }
             }
-            $_SESSION['cart'] = array();    
+            $_SESSION['cart'] = array();
         }
     } else{
         $_SESSION['registerError'] = "Uw hoort ingelogd te zijn om een bestelling te kunnen plaatsen.";

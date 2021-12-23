@@ -1,7 +1,24 @@
 <?php
 include "header.php";
 ?>
-  <h1 class="winkelwagen_titel">Winkelmand <?php if(!$_SESSION['login']){ echo "(Stap 1/3)"; } ?></h1>
+<div class="bar_row">
+  <div class="bar_block bar_active">
+    Winkelmand
+  </div>
+  <div class="bar_line"></div>
+  <div class="bar_block">
+    Gevens
+  </div>
+  <div class="bar_line"></div>
+  <div class="bar_block">
+    Betaling
+  </div>
+  <div class="bar_line"></div>
+  <div class="bar_block">
+    Overzicht
+  </div>
+</div>
+<h1 class="winkelwagen_titel">Winkelmand</h1>
 <?php
 
 // komt door merge conflict (waarschijnlijk useless)
@@ -39,10 +56,6 @@ if (isset($_GET["plus"])) {              // zelfafhandelend formulier
     $stockItemID = $_GET["id"];
     plusProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
     header("Refresh:0; url=cart.php");
-}
-
-if (isset($_GET["order"])) {              // zelfafhandelend formulier
-    saveOrder($databaseConnection);
 }
 
 
@@ -99,7 +112,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
     print("<th class='cart_text_style'></th>");
     print("<div class='cart_buttons_box'>");
     if($_SESSION['login']){
-        print("<a href='cart.php?order=true' class='cart_button'>Bestellen</a>");
+        print("<a href='adress.php' class='cart_button'>Bestellen</a>");
     }
     print("<a href='index.php' class='cart_button'>Verder Winkelen</a>");
     print("<th class='cart_text_style'></th>");

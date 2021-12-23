@@ -1,24 +1,40 @@
 <?php
 include "header.php";
+
+
+if (isset($_GET["order"])) {              // zelfafhandelend formulier
+    saveOrder($databaseConnection);
+}
 ?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <style link rel="public/css/mijn.css" type="text/css"></style>
-    <title>Winkelmand</title>
-</head>
-<body>
+
+<div class="bar_row">
+  <div class="bar_block bar_done">
+    Winkelmand
+  </div>
+  <div class="bar_line bar_done"></div>
+  <div class="bar_block bar_done">
+    Gevens
+  </div>
+  <div class="bar_line bar_done"></div>
+  <div class="bar_block bar_done">
+    Betaling
+  </div>
+  <div class="bar_line bar_done"></div>
+  <div class="bar_block bar_active">
+    Overzicht
+  </div>
+</div>
   <h1 class="winkelwagen_titel">Bestelling gegevens</h1>
   <div class="box_100">
     <div class="bestelling_titel">Producten:</div>
     <div class="bestelling_titel">Adres:</div>
   </div>
+  <div class="border_vertical"></div>
 <div class="box_100">
   <div class="bestelling_inhoud">
   <?php
 
-    $bestelling = $cart;
+    $bestelling = $_SESSION['orderinfo'];
     $totaal = 0;
 
     if (!empty($bestelling)) { //checkt of er iets in de winkel wagen zit
@@ -47,19 +63,21 @@ include "header.php";
   </div>
   <div class="bestelling_inhoud">
     <div class="margintop_60"></div>
+  <?php $user = $_SESSION['userinfo']; ?>
     <div class="adres_row">
-      <div class="adres_label">Naam: Henk</div>
-      <div class="adres_label">email: henk@gmail.com</div>
+      <div class="adres_label">Naam: <?php print_r($user['Voornaam'])?></div>
+      <div class="adres_label">email: <?php print_r($user['Emailadres'])?></div>
     </div>
       <div class="adres_row">
-        <div class="adres_label">Straat: Dropsweg</div>
-        <div class="adres_label">huisnummer: 103</div>
+        <div class="adres_label">Straat: <?php print_r($user['Straat'])?></div>
+        <div class="adres_label">huisnummer: <?php print_r($user['Huisnummer'])?></div>
       </div>
     <div class="adres_row">
-      <div class="adres_label">plaats: Utrecht</div>
-      <div class="adres_label">postcode: 3738CC</div>
+      <div class="adres_label">plaats: <?php print_r($user['Plaats'])?></div>
+      <div class="adres_label">postcode: <?php print_r($user['Postcode'])?></div>
     </div>
   </div>
 </div>
+<a href="index.php" class="adres_button">Home</a>
 </body>
 </html>
