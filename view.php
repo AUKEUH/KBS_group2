@@ -8,7 +8,11 @@ include __DIR__ . "/header.php";
     } else {
         $stockItemID = 0;
     }
-
+$query = "SELECT Temperature FROM coldroomtemperatures ORDER BY ColdRoomTemperatureID DESC";
+$statement = mysqli_prepare($databaseConnection, $query);
+mysqli_stmt_execute($statement);
+$result = mysqli_stmt_get_result($statement);
+$result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
@@ -94,6 +98,10 @@ function getVoorraadTekst($actueleVoorraad) {
               <div class="info_icon_block"><i class='fas fa-info-circle'></i></div>
               <div class="show_info_block">Je product wordt niet gereserveerd. Dus koop je product snel!</div>
             </div>
+
+            <?php
+            echo "De huidige temperatuur van dit product: " . $result[0]['Temperature']; ?>
+
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">

@@ -598,4 +598,26 @@ dl, ol, ul {
 ::placeholder {
     color: #D3D3D3;
 }
+.loginbutton{
+    background-color: #4CAF50;
+    margin-top: 10px;
+    border-radius:  10px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+}
+.logoutbutton{
+    background-color: #4CAF50;
+    margin-top: 10px;
+    border-radius:  10px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+}
 
