@@ -35,6 +35,7 @@ if (isset($_GET['username'] )){
             $_SESSION["login"] = TRUE;
             $_SESSION["username"] = $_GET["username"];
             $_SESSION["Voornaam"] = $row['Voornaam'];
+            $_SESSION["RegistratieId"] = $row['RegistratieId'];
             header("Refresh:0; url=index.php");
         }
         else {
