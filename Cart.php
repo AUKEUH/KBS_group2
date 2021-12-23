@@ -78,7 +78,9 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           $PrijsPerStuk = $stockitem["SellPrice"];
           $totaal = $totaal += $prijs;
           print("<tr>");
-          print("<td><img style='width:120px;' src='Public/StockItemIMG/".$StockItemImage[0]['ImagePath']."'></td>");                                    // artikel plaatje
+          if(isset($StockItemImage[0]['ImagePath'])){
+            print("<td><img style='width:120px;' src='Public/StockItemIMG/".$StockItemImage[0]['ImagePath']."'></td>");
+          }
           print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>"); // artikel naam
           print("<td><a class='cart_button_small' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'>-</a></td>");                          // min knop
           print("<td class='cart_text_style'>" . $aantal . "</td>");                                                                                     // aantal producten
