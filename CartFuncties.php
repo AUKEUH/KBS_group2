@@ -68,7 +68,7 @@ if (isset($_GET["changeProductToCart"])) {              // zelfafhandelend formu
     $thisQuantityOnHand = $_GET['QuantityOnHand'];
 
     if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
-      if ($thisQuantityOnHand > $changevalue) {      //Kan je niet minder dan 0 aantal hebben
+      if ($thisQuantityOnHand >= $changevalue) {      //Kan je niet minder dan 0 aantal hebben
         $cart[$stockItemID] = $changevalue;
       }
     }

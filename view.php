@@ -8,6 +8,16 @@ include __DIR__ . "/header.php";
     } else {
         $stockItemID = 0;
     }
+
+    if (isset($_GET["submit"])) {              // zelfafhandelend formulier
+        $stockItemID = $_GET["id"];
+        addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+        print("<h6>Product is toegevoegd aan winkel mand</h6>");
+        print("<a href='cart.php' class='view_button_cart'>Naar winkelmand</a>");
+        header("Refresh:0; url=view.php?id=$stockItemID");
+
+    }
+    
 $query = "SELECT Temperature FROM coldroomtemperatures ORDER BY ColdRoomTemperatureID DESC";
 $statement = mysqli_prepare($databaseConnection, $query);
 mysqli_stmt_execute($statement);
@@ -107,7 +117,6 @@ function getVoorraadTekst($actueleVoorraad) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print str_replace('.', ',', sprintf("€ %.2f", $StockItem['SellPrice'] - $userKorting)); ?></b></p>
                         <h6> Inclusief BTW </h6>
-                        <form method="post">
                             <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
                             <?php $cart = getCart();
                                     if (isset($cart[$stockItemID])) {
@@ -116,22 +125,12 @@ function getVoorraadTekst($actueleVoorraad) {
                                       $cart_aantal = 0;
                                     }
                                     if (preg_replace('/\D/', '', $StockItem["QuantityOnHand"]) > $cart_aantal){ //checkt of het product nog op voorraad is
-                                      ?><input type="submit" name="submit" value="Voeg toe aan winkelmand">
+                                      ?><a class="winkelmand_button" href="view.php?submit=true&id=<?php print($stockItemID)?>">Voeg toe aan winkelmand</a>
                                       <?php
                                     }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
-                                      ?><div class="cart_button_hover"><input class='view_button_false' type="submit" name="submit" value="Voeg toe aan winkelmand"></div><?php
+                                      ?><div class="cart_button_hover"><div class="winkelmand_button" >Voeg toe aan winkelmand</div></div><?php
                                     } ?>
                             <!-- <input type="submit" name="submit" value="Voeg toe aan winkelmandje"> -->
-                        </form>
-
-                        <?php
-                        if (isset($_POST["submit"])) {              // zelfafhandelend formulier
-                            $stockItemID = $_POST["stockItemID"];
-                            addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-                            print("<h6>Product is toegevoegd aan winkel mand</h6>");
-                            print("<a href='cart.php' class='view_button_cart'>Naar winkelmand</a>");
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
