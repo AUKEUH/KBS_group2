@@ -102,13 +102,20 @@ function getVoorraadTekst($actueleVoorraad) {
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $StockItem['StockItemName']; ?>
             </h2>
+
+                        <?php
+                        echo "De huidige temperatuur van dit product: " . $result[0]['Temperature']; ?>
+            <?php
+            $actueleVoorraad = filter_var($StockItem["QuantityOnHand"], FILTER_SANITIZE_NUMBER_INT);
+            if ($actueleVoorraad > 0 && $actueleVoorraad < 21){
+              print("<div class='bijna_uitverkocht'>Bijna uitverkocht!</div>");
+            }
+              ?>
             <div class="QuantityText"><?php print getVoorraadTekst($StockItem["QuantityOnHand"]); ?>
               <div class="info_icon_block"><i class='fas fa-info-circle'></i></div>
               <div class="show_info_block">Je product wordt niet gereserveerd. Dus koop je product snel!</div>
             </div>
 
-            <?php
-            echo "De huidige temperatuur van dit product: " . $result[0]['Temperature']; ?>
 
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">

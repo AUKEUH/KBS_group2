@@ -304,6 +304,12 @@ if (isset($amount)) {
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
                     <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
+                    <?php
+                    $actueleVoorraad = $row["QuantityOnHand"];
+                    if ($actueleVoorraad > 0 && $actueleVoorraad < 21){
+                      print("<div class='bijna_uitverkocht'>Bijna uitverkocht!</div>");
+                    }
+                      ?>
                     <h4 class="ItemQuantity"><?php print getVoorraadTekst($row["QuantityOnHand"]); ?></h4>
                 </div>
             <!--  coderegel 2 van User story: bekijken producten  -->
