@@ -297,7 +297,7 @@ if (isset($amount)) {
 
                     <div id="StockItemFrameRight">
                         <div class="CenterPriceLeftChild">
-                            <h1 class="StockItemPriceText"><?php print str_replace('.', ',', sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])- $userKorting)); ?></h1>
+                            <h1 class="StockItemPriceText"><?php print  sprintf("€ %.2f", str_replace('.', ',', sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])- $userKorting))); ?></h1>
                             <h6>Inclusief BTW </h6>
                         </div>
                     </div>
@@ -369,7 +369,7 @@ if (isset($amount)) {
                             </div>
                         </div>
                     </div>
-                <?php } 
+                <?php }
                 $HeaderStockGroups = getHeaderStockGroups($databaseConnection);
                 print "<ul style='display: block; margin: 45px auto;'>";
                 foreach ($HeaderStockGroups as $HeaderStockGroup) {
