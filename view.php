@@ -12,12 +12,10 @@ include __DIR__ . "/header.php";
     if (isset($_GET["submit"])) {              // zelfafhandelend formulier
         $stockItemID = $_GET["id"];
         addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-        print("<h6>Product is toegevoegd aan winkel mand</h6>");
-        print("<a href='cart.php' class='view_button_cart'>Naar winkelmand</a>");
-        header("Refresh:0; url=view.php?id=$stockItemID");
+        header("Refresh:0; url=view.php?id=$stockItemID&succes=true");
 
     }
-    
+
 $query = "SELECT Temperature FROM coldroomtemperatures ORDER BY ColdRoomTemperatureID DESC";
 $statement = mysqli_prepare($databaseConnection, $query);
 mysqli_stmt_execute($statement);
@@ -129,7 +127,14 @@ function getVoorraadTekst($actueleVoorraad) {
                                       <?php
                                     }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
                                       ?><div class="cart_button_hover"><div class="winkelmand_button" >Voeg toe aan winkelmand</div></div><?php
-                                    } ?>
+                                    }
+                                    if (isset($_GET['succes'])){
+                                      print("<h6>Product is toegevoegd aan winkel mand</h6>");
+                                      print("<a href='cart.php' class='view_button_cart'>Naar winkelmand</a>");
+                                    }
+
+
+                                    ?>
                             <!-- <input type="submit" name="submit" value="Voeg toe aan winkelmandje"> -->
                     </div>
                 </div>
