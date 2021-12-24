@@ -184,11 +184,9 @@ function getVoorraadTekst($actueleVoorraad) {
         </div>
         <?php
     } else {
+        header("Refresh:0; url=http://localhost/git/KBS_group2/404.php");
         ?>
-        <h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2>
-        <p>Wellicht bent uw hier naar op zoek:</p>
 
-        <div id="ResultsArea" class="Browse">
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
         foreach ($ReturnableResult as $row) {
