@@ -90,7 +90,7 @@ if (!empty($cart)) { //checkt of er iets in de winkel wagen zit
           }
           print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>"); // artikel naam
           print("<td><a class='cart_button_small' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'>-</a></td>");                          // min knop
-          print("<td class='cart_text_style'><input id='" . ($stockitem["StockItemID"]) . "' type='number' maxlength='3' class='cart_input_style' value='" . $aantal . "'></td>");                                                                                     // aantal producten
+          print("<td class='cart_text_style'><input id='" . ($stockitem["StockItemID"]) . "' type='number' maxlength='3' class='cart_input_style' value='" . $aantal . "'></td>");// aantal producten
           if ($thisQuantityOnHand > $aantal){ //checkt of het product nog op voorraad is
                print("<td><a class='cart_button_small extra_cart_button_small' href='cart.php?plus=true&id=". ($stockitem["StockItemID"]) ."'> + </a></td>");
           }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan

@@ -2,7 +2,6 @@
 <?php
 include __DIR__ . "/header.php";
 
-// print sprintf(" %0.2f", berekenVerkoopPrijs(10,21));
 
 $ReturnableResult = null;
 $Sort = "SellPrice";
@@ -180,6 +179,12 @@ $Query = "
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 }
+$query = "SELECT rating FROM reviews";
+$statement = mysqli_prepare($databaseConnection, $query);
+mysqli_stmt_execute($statement);
+$result = mysqli_stmt_get_result($statement);
+$result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 $amount = $Result[0];
 if (isset($amount)) {
     $AmountOfPages = ceil($amount["count(*)"] / $ProductsOnPage);

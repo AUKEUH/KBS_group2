@@ -22,6 +22,12 @@ mysqli_stmt_execute($statement);
 $result = mysqli_stmt_get_result($statement);
 $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+$query = "SELECT rating FROM reviews";
+$statement = mysqli_prepare($databaseConnection, $query);
+mysqli_stmt_execute($statement);
+$rating = mysqli_stmt_get_result($statement);
+$rating = mysqli_fetch_all($rating, MYSQLI_ASSOC);
+
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 function getVoorraadTekst($actueleVoorraad) {
@@ -104,7 +110,9 @@ function getVoorraadTekst($actueleVoorraad) {
             </h2>
 
                         <?php
-                        echo "De huidige temperatuur van dit product: " . $result[0]['Temperature']; ?>
+                        echo "De huidige temperatuur van dit product: " . $result[0]['Temperature'];
+                        echo "De huidige temperatuur van dit product: " . $rating[0]['rating'];
+            ?>
             <?php
             $actueleVoorraad = filter_var($StockItem["QuantityOnHand"], FILTER_SANITIZE_NUMBER_INT);
             if ($actueleVoorraad > 0 && $actueleVoorraad < 21){
