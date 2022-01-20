@@ -22,7 +22,7 @@ mysqli_stmt_execute($statement);
 $result = mysqli_stmt_get_result($statement);
 $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-$query = "SELECT rating FROM reviews";
+$query = "SELECT AVG (rating) FROM reviews";
 $statement = mysqli_prepare($databaseConnection, $query);
 mysqli_stmt_execute($statement);
 $rating = mysqli_stmt_get_result($statement);
@@ -110,8 +110,10 @@ function getVoorraadTekst($actueleVoorraad) {
             </h2>
 
                         <?php
-                        echo "De huidige temperatuur van dit product: " . $result[0]['Temperature'];
-                        echo "De huidige temperatuur van dit product: " . $rating[0]['rating'];
+                        echo "De huidige temperatuur van dit product: " . $result[0]['Temperature'];  ?>
+        </br>
+            <?php
+                        echo "De gemiddelde rating van dit product: " . sprintf("%01.1f",$rating[0]['AVG (rating)']);
             ?>
             <?php
             $actueleVoorraad = filter_var($StockItem["QuantityOnHand"], FILTER_SANITIZE_NUMBER_INT);
