@@ -1,6 +1,7 @@
 <!-- dit bestand bevat alle code voor het productoverzicht -->
 <?php
 include __DIR__ . "/header.php";
+require_once 'review.php';
 
 // print sprintf(" %0.2f", berekenVerkoopPrijs(10,21));
 
@@ -281,10 +282,12 @@ if (isset($amount)) {
                         </div>
                     </div>
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
-                    <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
+                    <p class="StockItemName"><?php print $row["StockItemName"]; ?> </p>
+                    <p class="StockItemComments"> <?php echo "De gemiddelde rating van dit product: " . sprintf("%01.1f",$rating[0]['AVG (rating)']); ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
                     <h4 class="ItemQuantity"><?php print getVoorraadTekst($row["QuantityOnHand"]); ?></h4>
                 </div>
+
             <!--  coderegel 2 van User story: bekijken producten  -->
 
 
