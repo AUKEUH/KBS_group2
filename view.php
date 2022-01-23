@@ -22,11 +22,17 @@ mysqli_stmt_execute($statement);
 $result = mysqli_stmt_get_result($statement);
 $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-$query = "SELECT AVG (rating) FROM reviews";
+$query = "SELECT AVG (rating) from reviews where StockItemID = $stockItemID";
 $statement = mysqli_prepare($databaseConnection, $query);
 mysqli_stmt_execute($statement);
 $rating = mysqli_stmt_get_result($statement);
 $rating = mysqli_fetch_all($rating, MYSQLI_ASSOC);
+
+$query = "SELECT content from reviews where StockItemID = $stockItemID";
+$statement = mysqli_prepare($databaseConnection, $query);
+mysqli_stmt_execute($statement);
+$text = mysqli_stmt_get_result($statement);
+$text = mysqli_fetch_all($text, MYSQLI_ASSOC);
 
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
@@ -113,8 +119,17 @@ function getVoorraadTekst($actueleVoorraad) {
                         echo "De huidige temperatuur van dit product: " . $result[0]['Temperature'];  ?>
         </br>
             <?php
-                        echo "De gemiddelde rating van dit product: " . sprintf("%01.1f",$rating[0]['AVG (rating)']);
+            if ($rating[0]['AVG (rating)'] <= 0.01) {
+                echo("Er is nog geen rating van dit product");
+            }else {
+                echo "De gemiddelde rating van dit product: " . sprintf("%01.1f", $rating[0]['AVG (rating)']);
+                }
             ?>
+            </br>
+            <?php
+
+            ?>
+
             <?php
             $actueleVoorraad = filter_var($StockItem["QuantityOnHand"], FILTER_SANITIZE_NUMBER_INT);
             if ($actueleVoorraad > 0 && $actueleVoorraad < 21){
@@ -162,7 +177,7 @@ function getVoorraadTekst($actueleVoorraad) {
             <h3>Artikel beschrijving</h3>
             <p><?php print $StockItem['SearchDetails']; ?></p>
         </div>
-        <div id="StockItemSpecifications">
+                <div id="StockItemSpecifications">
             <h3>Artikel specificaties</h3>
             <?php
             $CustomFields = json_decode($StockItem['CustomFields'], true);
@@ -172,6 +187,7 @@ function getVoorraadTekst($actueleVoorraad) {
                 <th>Naam</th>
                 <th>Data</th>
                 </thead>
+
                 <?php
                 foreach ($CustomFields as $SpecName => $SpecText) { ?>
                     <tr>
@@ -191,13 +207,23 @@ function getVoorraadTekst($actueleVoorraad) {
                         </td>
                     </tr>
                 <?php } ?>
-                </table><?php
+                </table>
+                <?php
             } else { ?>
 
                 <p><?php print $StockItem['CustomFields']; ?>.</p>
                 <?php
             }
             ?>
+        </div>
+        <div id="StockItemDescription">
+            <h3>Reviews</h3>
+            <p><?php
+                if ($text == null)
+                { print (" ");
+                }else{ print $text[0]['content'];}
+                    ?></p>
+
         </div>
         <?php
     } else {
@@ -208,6 +234,7 @@ function getVoorraadTekst($actueleVoorraad) {
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
         foreach ($ReturnableResult as $row) {
             ?>
+
             <!--  coderegel 1 van User story: bekijken producten  -->
     <a class="ListItem" href='view.php?id=<?php print $row['StockItemID']; ?>'>
 
