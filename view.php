@@ -15,7 +15,15 @@ include __DIR__ . "/header.php";
         header("Refresh:0; url=view.php?id=$stockItemID&succes=true");
 
     }
-
+    if (isset($_SESSION['content'])){
+        $text = $_SESSION['content'];
+    }
+    if (isset($_SESSION['name'])){
+        $text = $_SESSION['name'];
+    }
+    if (isset($_SESSION['rating'])) {
+        $text = $_SESSION['rating'];
+    }
 $query = "SELECT Temperature FROM coldroomtemperatures ORDER BY ColdRoomTemperatureID DESC";
 $statement = mysqli_prepare($databaseConnection, $query);
 mysqli_stmt_execute($statement);
@@ -28,7 +36,7 @@ mysqli_stmt_execute($statement);
 $rating = mysqli_stmt_get_result($statement);
 $rating = mysqli_fetch_all($rating, MYSQLI_ASSOC);
 
-$query = "SELECT content from reviews where StockItemID = $stockItemID";
+$query = "SELECT * from reviews where StockItemID = $stockItemID ORDER BY id DESC";
 $statement = mysqli_prepare($databaseConnection, $query);
 mysqli_stmt_execute($statement);
 $text = mysqli_stmt_get_result($statement);
@@ -218,11 +226,20 @@ function getVoorraadTekst($actueleVoorraad) {
         </div>
         <div id="StockItemDescription">
             <h3>Reviews</h3>
-            <p><?php
-                if ($text == null)
-                { print (" ");
-                }else{ print $text[0]['content'];}
-                    ?></p>
+            <br>
+
+                <?php
+                if ($text == null){
+                    print (" ");
+                }else {
+                    foreach ($text as $content ){
+                        print $content['name']."<html>"."\n" ;
+                        print ("Gegeven Rating : ") . $content['rating']."<html>"."\n" ; ?><br><?php
+
+                        print $content['content']; ?><br> <br><?php }
+                        }
+                    ?>
+              </p>
 
         </div>
         <?php

@@ -113,7 +113,30 @@ function getUser($databaseConnection) {
 
     return $R;
 }
+function review($databaseConnection, $stockItemID) {
+    $query = "SELECT content from reviews where StockItemID = $stockItemID";
+    $statement = mysqli_prepare($databaseConnection, $query);
+    mysqli_stmt_execute($statement);
+    $text = mysqli_stmt_get_result($statement);
+    $text = mysqli_fetch_all($text, MYSQLI_ASSOC);
 
+    return $text;
+}
+//function Reviews ($stockItemID, $databaseConnection) {
+//
+//    $Query = "
+//                SELECT id
+//                FROM reviews
+//                WHERE StockItemID = $stockItemID";
+//
+//    $Statement = mysqli_prepare($databaseConnection, $Query);
+//    mysqli_stmt_bind_param($Statement,"i", $stockItemID);
+//    mysqli_stmt_execute($Statement);
+//    $content = mysqli_stmt_get_result($Statement);
+//    $content = mysqli_fetch_all($content, MYSQLI_ASSOC);
+//
+//    return $content;
+//}
 // placeOrderRow($cart, $databaseConnection){
 //     $Query = "INSERT INTO orders (CustomerID, OrderDate, OrderStatus, OrderTotal) VALUES (?, ?, ?, ?)";
 //     $Statement = mysqli_prepare($databaseConnection, $Query);
