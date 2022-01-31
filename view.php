@@ -224,7 +224,7 @@ function getVoorraadTekst($actueleVoorraad) {
             }
             ?>
         </div>
-        <div id="StockItemDescription">
+        <div id="reviewbox">
             <h3>Reviews</h3>
             <br>
 
@@ -232,12 +232,14 @@ function getVoorraadTekst($actueleVoorraad) {
                 if ($text == null){
                     print (" ");
                 }else {
-                    foreach ($text as $content ){
+                    foreach ($text as $content){
+
                         print $content['name']."<html>"."\n" ;
                         print ("Gegeven Rating : ") . $content['rating']."<html>"."\n" ; ?><br><?php
 
                         print $content['content']; ?><br> <br><?php }
                         }
+
                     ?>
               </p>
 
