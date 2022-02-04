@@ -25,8 +25,9 @@ if (isset($_GET['username'] )){
     $conn = mysqli_connect('localhost', 'root', '', 'nerdygadgets', 3306);
     $username = $_GET['username'];
     $password = $_GET['password'];
-    $query = "select * from registratiedata where Emailadres = '$username'";
+    $query = "select * from registratiedata where Emailadres = ?";
     $statement = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($statement, "s", $username);
     mysqli_stmt_execute($statement);
     $resultSet = mysqli_stmt_get_result($statement);
     if (mysqli_num_rows($resultSet) > 0) {
