@@ -2,22 +2,24 @@
 include "header.php";
 ?>
     <div id="CenteredContent">
+    <?php if($_SESSION["login"] ==! TRUE) { ?>
     <h1>Inloggen</h1>
-
+    <?php }
+        else { }?>
     <form method="GET" action="login.php">
-        <label for="username">Emailadres:</label>
-        <input type="text" placeholder="example@email.com" name="username" id="username" required>
-        <br>
-        <label for="password">Wachtwoord:</label>
-        <input type="password" name="password" id="password" required>
         <?php if($_SESSION["login"] === TRUE) { ?>
             <a class="logoutbutton" href='login.php?logout=true' >Uitloggen</a>
         <?php }
         else { ?>
+            <label for="username">Emailadres:</label>
+            <input type="text" placeholder="example@email.com" name="username" id="username" required>
+            <br>
+            <label for="password">Wachtwoord:</label>
+            <input type="password" name="password" id="password" required>
             <button class="loginbutton" type="submit" name="submit" class="btn  mt-2 btn-primary">Inloggen</button>
+            <br>
+            <a href="register.php" class="HrefDecoration">Ik heb nog geen account</a>
         <?php } ?>
-        <br>
-        <a href="register.php" class="HrefDecoration">Ik heb nog geen account</a>
     </form>
 
 <?php
