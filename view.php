@@ -387,7 +387,7 @@ $row = mysqli_fetch_assoc($resultSet);
                 <?php } ?>
             </table>
         </div>
-
+<?php if($_SESSION["login"] === TRUE) { ?>
 <div id="StockItemreviewschrijven">
     <h3>Review schrijven</h3>
 
@@ -406,5 +406,7 @@ $row = mysqli_fetch_assoc($resultSet);
         </thead>
     </table>
 </div>
+<?php }
+else { }?>
 <script src="Public/JS/custom.js"></script>
 
