@@ -3,9 +3,9 @@ require_once 'connect.php';
 require_once 'header.php';
 
 
-    $content = $_POST["review"];
-    $ratingsgetaltoe = $_POST["ratingsgetal"];
-    $naam = $_SESSION["Voornaam"];
+$content = $_POST["review"];
+$ratingsgetaltoe = $_POST["ratingsgetal"];
+$naam = $_SESSION["Voornaam"];
 
 
 

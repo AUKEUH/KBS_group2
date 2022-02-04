@@ -387,6 +387,8 @@ $row = mysqli_fetch_assoc($resultSet);
                 <?php } ?>
             </table>
         </div>
+
+//review schrijven//
 <?php if($_SESSION["login"] === TRUE) { ?>
 <div id="StockItemreviewschrijven">
     <h3>Review schrijven</h3>
