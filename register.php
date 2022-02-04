@@ -4,7 +4,7 @@ include "header.php";
 <div id="CenteredContent">
     <h1>Regristreren <?php if(!$_SESSION['login']){ echo "(Stap 2/3)"; } ?></h1>
 
-    <form method="POST" action="ophalendata/insert.php">
+    <form method="POST" action="insert.php">
         <label for="username">Voornaam* (voorvoegsel):</label>
         <input type="text" placeholder="Henk" name="voornaam" id="username" required>
         <br>

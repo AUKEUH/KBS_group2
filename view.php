@@ -204,6 +204,8 @@ function getVoorraadTekst($actueleVoorraad) {
         header("Refresh:0; url=http://localhost/git/KBS_group2/404.php");
         ?>
 
+
+
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
         foreach ($ReturnableResult as $row) {
@@ -289,5 +291,120 @@ function getVoorraadTekst($actueleVoorraad) {
 </div>
         <?php
     } ?>
+
+<?php
+$query = "SELECT name, content, rating FROM reviews WHERE StockItemID = $stockItemID ORDER BY RAND() LIMIT 1;";
+$statement = mysqli_prepare($databaseConnection, $query);
+mysqli_stmt_execute($statement);
+$resultSet = mysqli_stmt_get_result($statement);
+$row = mysqli_fetch_assoc($resultSet);
+?>
+
+        <div id="StockItemreviews">
+            <h3>Reviews</h3>
+
+            <table>
+                <?php if (isset($row['name'])){ ?>
+                <thead>
+                    <th>
+                        <?php
+                            echo ($row['name']);
+                        ?>
+                        <br>
+                        <br>
+                        <?php
+                        echo ("Rating:"." ".$row['rating']);
+                        ?>
+                    </th>
+                    <th>
+                </thead>
+                    <tr>
+                        <td>
+                            <?php
+                                echo ($row['content']);
+                            ?>
+                        </td>
+                    </tr>
+                <?php }
+                else {
+                    echo("Er zijn nog geen reviews geschreven voor dit product!");
+                }
+                    ?>
+
+                <?php
+                mysqli_stmt_execute($statement);
+                $resultSet = mysqli_stmt_get_result($statement);
+                $row = mysqli_fetch_assoc($resultSet);
+
+                if (isset($row['name'])){ ?>
+                    <thead>
+                        <th>
+                            <?php
+                                echo ($row['name']);
+                            ?>
+                            <br>
+                            <br>
+                            <?php
+                            echo ("Rating:"." ".$row['rating']);
+                            ?>
+                        </th>
+                    </thead>
+                        <tr>
+                            <td>
+                                <?php
+                                echo ($row['content']);
+                                ?>
+                            </td>
+                        </tr>
+                <?php } ?>
+
+                <?php
+                mysqli_stmt_execute($statement);
+                $resultSet = mysqli_stmt_get_result($statement);
+                $row = mysqli_fetch_assoc($resultSet);
+
+                if (isset($row['name'])){ ?>
+                    <thead>
+                        <th>
+                            <?php
+                                echo ($row['name']);
+                            ?>
+                            <br>
+                            <br>
+                            <?php
+                            echo ("Rating:"." ".$row['rating']);
+                            ?>
+                        </th>
+
+                    </thead>
+                         <tr>
+                            <td>
+                                <?php
+                                    echo ($row['content']);
+                                ?>
+                            </td>
+                        </tr>
+                <?php } ?>
+            </table>
+        </div>
+
+<div id="StockItemreviewschrijven">
+    <h3>Review schrijven</h3>
+
+    <table>
+        <thead>
+        <th>
+            <form method="POST" action="insertreview.php">
+                <label for="password">Review</label>
+                <input type="text" name="review" id="review" required>
+                <label for="username">Rating</label>
+                <input type="number" placeholder="8" name="ratingsgetal" id="rating" min="1" max="10"required>
+                <br>
+                <button type="submit" name="submit" class="btn  mt-2 btn-primary">Submit</button>
+            </form>
+        </th>
+        </thead>
+    </table>
 </div>
 <script src="Public/JS/custom.js"></script>
+
